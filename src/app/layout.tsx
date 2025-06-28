@@ -20,12 +20,11 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${poppins.variable} font-body antialiased`}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-        >
+<ThemeProvider
+    attribute="class"
+    defaultTheme="dark"
+    enableSystem
+>
             <CustomCursor />
             {children}
             <Toaster />
