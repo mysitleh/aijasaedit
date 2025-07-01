@@ -3,7 +3,6 @@
 import {
   collection,
   getDocs,
-  getFirestore,
   orderBy,
   query,
   Timestamp,
@@ -11,11 +10,9 @@ import {
   deleteDoc,
   doc,
 } from 'firebase/firestore';
-import { app } from '@/lib/firebase';
+import { db, isFirebaseEnabled } from '@/lib/firebase';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
-
-const db = getFirestore(app);
 
 // Define the type for a single order document
 export interface Order {
@@ -42,6 +39,10 @@ export interface Service {
 
 
 export async function getOrders(): Promise<Order[]> {
+  if (!isFirebaseEnabled) {
+    console.log("Firebase is not configured. Skipping fetching orders.");
+    return [];
+  }
   try {
     const ordersRef = collection(db, 'orders');
     const q = query(ordersRef, orderBy('created_at', 'desc'));
@@ -82,6 +83,9 @@ const addServiceSchema = z.object({
 });
 
 export async function addService(formData: FormData) {
+    if (!isFirebaseEnabled) {
+        return { success: false, error: "Firebase is not configured. Cannot add service." };
+    }
     const rawData = Object.fromEntries(formData.entries());
 
     if (rawData.image_placeholder === '') {
@@ -108,6 +112,9 @@ export async function addService(formData: FormData) {
 }
 
 export async function deleteService(id: string) {
+    if (!isFirebaseEnabled) {
+        return { success: false, error: "Firebase is not configured. Cannot delete service." };
+    }
     if (!id) {
         return { success: false, error: "Service ID is required." };
     }

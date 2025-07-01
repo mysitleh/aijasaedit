@@ -27,10 +27,8 @@ import { createOrderAction, type Service } from "@/app/actions";
 import { Send, Upload, RefreshCw, Loader2, WalletCards } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "../ui/card";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { app } from "@/lib/firebase";
-
-const storage = getStorage(app);
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage, isFirebaseEnabled } from "@/lib/firebase";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Nama harus memiliki minimal 2 karakter." }),
@@ -92,6 +90,15 @@ export default function OrderForm({ services }: { services: Service[] }) {
   };
 
   async function onSubmit(data: FormValues) {
+    if (!isFirebaseEnabled) {
+      toast({
+        variant: "destructive",
+        title: "Konfigurasi Tidak Lengkap",
+        description: "Layanan Firebase tidak aktif. Silakan konfigurasikan .env Anda.",
+      });
+      return;
+    }
+
     if (!file) {
       toast({
         variant: "destructive",

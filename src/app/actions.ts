@@ -1,12 +1,10 @@
 "use server";
 
 import { z } from "zod";
-import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "firebase/firestore";
-import { app } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "firebase/firestore";
+import { db, isFirebaseEnabled } from "@/lib/firebase";
 // Note: AI Transformation and Storage uploads are removed from this immediate action
 // to prevent timeouts and support an asynchronous workflow.
-
-const db = getFirestore(app);
 
 const orderSchema = z.object({
   name: z.string().min(2, { message: "Nama harus memiliki minimal 2 karakter." }),
@@ -30,6 +28,10 @@ export interface Service {
 }
 
 export async function getServices(): Promise<Service[]> {
+  if (!isFirebaseEnabled) {
+    console.log("Firebase is not configured. Skipping fetching services and returning empty array.");
+    return [];
+  }
   try {
     const servicesRef = collection(db, 'services');
     const q = query(servicesRef, orderBy('order', 'asc'));
@@ -67,6 +69,10 @@ export async function createOrderAction(payload: OrderPayload): Promise<{
   success: boolean;
   error?: string;
 }> {
+  if (!isFirebaseEnabled) {
+    return { success: false, error: "Firebase is not configured. Cannot create order." };
+  }
+
   const validation = orderSchema.safeParse(payload);
   if (!validation.success) {
     const errorMessage = validation.error.issues.map(i => i.message).join(' ');
