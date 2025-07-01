@@ -4,10 +4,12 @@ A modern web application built with Next.js and Firebase, providing AI-powered p
 
 ## Features
 
-- **AI Transformation:** Upload your media and get several AI-generated transformation options.
-- **Order Form:** A seamless ordering process to request custom edits.
-- **Responsive Design:** An elegant and modern interface that works on all devices.
-- **Built with Modern Tech:** Next.js, React, Tailwind CSS, ShadCN UI, Genkit, and Firebase.
+- **Dynamic Service Management:** Admins can add, update, and remove services directly from a secure dashboard without touching the code. The main landing page dynamically displays these services.
+- **Admin Dashboard:** A dedicated interface (`/admin`) to monitor incoming customer orders and manage the list of available services.
+- **AI Transformation:** The app is structured to support AI-powered media transformations using Genkit.
+- **Order Form:** A seamless ordering process for customers to request custom edits, with file uploads handled securely by Firebase Storage.
+- **Responsive & Modern UI:** An elegant interface built with ShadCN UI and Tailwind CSS that works on all devices, featuring a custom cursor, smooth scrolling, and light/dark modes.
+- **Built with Modern Tech:** Next.js (App Router), React (Server Components), Genkit for AI, Firebase (Firestore, Storage), and Vercel/Firebase App Hosting for deployment.
 
 ---
 
@@ -54,7 +56,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID="1:your-sender-id:web:your-app-id"
 
 #### Step 3: Set Up Firestore Database
 
-Firestore will be used to store order details.
+Firestore will be used to store order details and the list of services.
 
 1.  In the Firebase Console, go to the **Build > Firestore Database** section.
 2.  Click **"Create database"**.
@@ -71,23 +73,29 @@ Firestore will be used to store order details.
           allow read, write: if false;
         }
 
+        // Allow public read-only access to the list of services
+        match /services/{serviceId} {
+          allow read: if true;
+          allow write: if false; // Writes are handled by secure server-side admin actions
+        }
+
         // Allow clients to create new orders, but only with valid data.
         // This provides server-side validation to prevent bad data.
+        // No one can read, update, or delete orders from the client-side.
         match /orders/{orderId} {
+          allow read, update, delete: if false;
           allow create: if request.resource.data.name is string &&
                            request.resource.data.name.size() >= 2 &&
                            request.resource.data.contact is string &&
                            request.resource.data.contact.size() >= 5 &&
                            request.resource.data.service is string &&
                            request.resource.data.service.size() > 0 &&
-                           request.resource.data.message is string &&
-                           request.resource.data.message.size() >= 10 &&
-                           request.resource.data.message.size() <= 500 &&
-                           request.resource.data.file_url is string &&
-                           request.resource.data.file_url.matches('https://firebasestorage.googleapis.com/.*') &&
-                           request.resource.data.created_at == request.time &&
-                           request.resource.data.status == 'pending_payment' &&
-                           request.resource.data.keys().hasOnly(['name', 'contact', 'service', 'message', 'file_url', 'created_at', 'status']);
+                           request.resource.data.description is string &&
+                           request.resource.data.description.size() >= 10 &&
+                           request.resource.data.description.size() <= 500 &&
+                           request.resource.data.fileUrl is string &&
+                           request.resource.data.fileUrl.matches('https://firebasestorage.googleapis.com/.*') &&
+                           request.resource.data.keys().hasOnly(['name', 'contact', 'service', 'description', 'fileUrl']);
         }
       }
     }
@@ -95,7 +103,7 @@ Firestore will be used to store order details.
 
 #### Step 4: Set Up Firebase Storage
 
-Storage is used for storing user-uploaded files.
+Storage is used for storing user-uploaded files for their orders.
 
 1.  In the Firebase Console, go to the **Build > Storage** section.
 2.  Click **"Get started"**.
@@ -113,13 +121,10 @@ Storage is used for storing user-uploaded files.
 
         // Allow anyone to upload files to the 'uploads' folder.
         // Restrict file size to 10MB, matching frontend validation.
+        // Reading is handled via secure download URLs, so public read is not needed.
         match /uploads/{fileName} {
+          allow read: if false;
           allow write: if request.resource.size < 10 * 1024 * 1024;
-        }
-
-        // Allow public read access to generated images
-        match /generated/{fileName} {
-            allow read: if true;
         }
       }
     }

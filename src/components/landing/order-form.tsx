@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { createOrderAction } from "@/app/actions";
+import { createOrderAction, type Service } from "@/app/actions";
 import { Send, Upload, RefreshCw, Loader2, WalletCards } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "../ui/card";
@@ -41,7 +41,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function OrderForm() {
+export default function OrderForm({ services }: { services: Service[] }) {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,9 +60,13 @@ export default function OrderForm() {
   useEffect(() => {
     // This cleanup function prevents memory leaks by revoking the object URL
     // when the component unmounts or when the preview dependency changes.
+    let objectUrl: string | null = null;
+    if (preview) {
+        objectUrl = preview;
+    }
     return () => {
-      if (preview) {
-        URL.revokeObjectURL(preview);
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl);
       }
     };
   }, [preview]);
@@ -79,7 +83,9 @@ export default function OrderForm() {
         return;
       }
       setFile(selectedFile);
-      // The useEffect will handle cleaning up the old preview URL.
+      if (preview) {
+          URL.revokeObjectURL(preview);
+      }
       const previewUrl = URL.createObjectURL(selectedFile);
       setPreview(previewUrl);
     }
@@ -112,9 +118,6 @@ export default function OrderForm() {
           description: "Kami telah menerima permintaan Anda. Silakan selesaikan pembayaran.",
         });
         setIsSuccess(true);
-        form.reset();
-        setFile(null);
-        setPreview(null);
       } else {
         throw new Error(response.error || "Terjadi kesalahan saat memproses pesanan.");
       }
@@ -135,7 +138,10 @@ export default function OrderForm() {
     setIsSubmitting(false);
     form.reset();
     setFile(null);
-    setPreview(null); // This will also trigger the useEffect cleanup
+    if (preview) {
+        URL.revokeObjectURL(preview);
+        setPreview(null);
+    }
   }
 
   if (isSuccess) {
@@ -231,18 +237,16 @@ export default function OrderForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Pilih Layanan</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting}>
+                <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting || services.length === 0}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Pilih jenis editan yang Anda inginkan" />
+                      <SelectValue placeholder={services.length > 0 ? "Pilih jenis editan yang Anda inginkan" : "Memuat layanan..."} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Supercar Scene">Adegan Supercar</SelectItem>
-                    <SelectItem value="Future Career Video">Video Karir Masa Depan</SelectItem>
-                    <SelectItem value="AI Graduation Photo">Foto Wisuda AI</SelectItem>
-                    <SelectItem value="Pet to Cartoon">Hewan Peliharaan Jadi Karakter Kartun</SelectItem>
-                    <SelectItem value="Fantasy Portrait">Potret Fantasi/Pahlawan Super</SelectItem>
+                    {services.map(service => (
+                       <SelectItem key={service.id} value={service.title}>{service.title}</SelectItem>
+                    ))}
                     <SelectItem value="Other">Lainnya (Jelaskan di bawah)</SelectItem>
                   </SelectContent>
                 </Select>

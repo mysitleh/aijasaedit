@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Sparkles, Download, Car, Briefcase, GraduationCap, Wand2, Phone, PawPrint, Rocket } from "lucide-react";
+import { FileText, Sparkles, Download } from "lucide-react";
+import type { Service } from "@/app/actions";
+import { renderIcon } from "@/components/icons/icon-map";
 
 const steps = [
   {
@@ -19,40 +21,29 @@ const steps = [
   },
 ];
 
-const prices = [
+const HowItWorks = ({ services }: { services: Service[] }) => {
+  const prices = services.length > 0 ? services : [
     {
-      icon: <Car className="h-8 w-8 text-primary" />,
-      title: 'Adegan Supercar',
-      price: 'Rp 75.000',
+      id: 'fallback-1', icon: 'Car', title: 'Adegan Supercar', price: 'Rp 75.000', order:1, description: '', image_placeholder: '', ai_hint: ''
     },
     {
-      icon: <Briefcase className="h-8 w-8 text-primary" />,
-      title: 'Video Karir Masa Depan',
-      price: 'Rp 100.000',
+      id: 'fallback-2', icon: 'Briefcase', title: 'Video Karir Masa Depan', price: 'Rp 100.000', order:2, description: '', image_placeholder: '', ai_hint: ''
     },
     {
-      icon: <GraduationCap className="h-8 w-8 text-primary" />,
-      title: 'Foto Wisuda AI',
-      price: 'Rp 60.000',
+      id: 'fallback-3', icon: 'GraduationCap', title: 'Foto Wisuda AI', price: 'Rp 60.000', order:3, description: '', image_placeholder: '', ai_hint: ''
     },
     {
-      icon: <PawPrint className="h-8 w-8 text-primary" />,
-      title: 'Hewan Peliharaan Jadi Kartun',
-      price: 'Rp 65.000',
+      id: 'fallback-4', icon: 'PawPrint', title: 'Hewan Peliharaan Jadi Kartun', price: 'Rp 65.000', order:4, description: '', image_placeholder: '', ai_hint: ''
     },
     {
-      icon: <Rocket className="h-8 w-8 text-primary" />,
-      title: 'Potret Fantasi',
-      price: 'Rp 85.000',
+      id: 'fallback-5', icon: 'Rocket', title: 'Potret Fantasi', price: 'Rp 85.000', order:5, description: '', image_placeholder: '', ai_hint: ''
     },
     {
-      icon: <Wand2 className="h-8 w-8 text-primary" />,
-      title: 'Edit AI Kustom',
-      price: 'Hubungi Kami',
+      id: 'fallback-6', icon: 'Wand2', title: 'Edit AI Kustom', price: 'Hubungi Kami', order:6, description: '', image_placeholder: '', ai_hint: ''
     },
-]
+  ];
 
-const HowItWorks = () => {
+
   return (
     <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
       <div className="container px-4 md:px-6">
@@ -83,11 +74,11 @@ const HowItWorks = () => {
         <div className="mx-auto max-w-5xl mt-20">
             <h3 className="text-2xl font-bold text-center mb-8 font-headline">Daftar Harga</h3>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {prices.map((item, index) => (
-                <Card key={index} className="group text-center bg-card hover:bg-secondary/60 transition-colors duration-300">
+              {prices.map((item) => (
+                <Card key={item.id} className="group text-center bg-card hover:bg-secondary/60 transition-colors duration-300">
                   <CardHeader className="items-center">
                     <div className="transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-12">
-                      {item.icon}
+                      {renderIcon(item.icon, { className: 'h-8 w-8 text-primary' })}
                     </div>
                     <CardTitle className="mt-4">{item.title}</CardTitle>
                   </CardHeader>

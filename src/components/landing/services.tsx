@@ -1,53 +1,73 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Camera, Video, GraduationCap, Sparkles, PawPrint, Rocket } from 'lucide-react';
 import Image from "next/image";
+import type { Service } from "@/app/actions";
+import { renderIcon } from "@/components/icons/icon-map";
 
-const services = [
-  {
-    icon: <Camera className="h-8 w-8 text-accent" />,
-    title: 'Adegan Supercar',
-    description: 'Posisikan diri Anda dalam adegan viral "diberhentikan polisi" dengan supercar mewah pilihan Anda.',
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'luxury car night'
-  },
-  {
-    icon: <Video className="h-8 w-8 text-accent" />,
-    title: 'Video Karir Masa Depan',
-    description: "Lihat anak Anda sebagai astronot, ilmuwan, atau profesi impian lainnya dalam video sinematik singkat.",
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'child scientist cinematic'
-  },
-  {
-    icon: <GraduationCap className="h-8 w-8 text-accent" />,
-    title: 'Foto Wisuda AI',
-    description: "Tidak sempat foto wisuda? Kami akan membuatkan foto yang profesional dan elegan untuk Anda.",
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'professional headshot'
-  },
-  {
-    icon: <PawPrint className="h-8 w-8 text-accent" />,
-    title: 'Hewan Peliharaan Jadi Kartun',
-    description: 'Ubah foto hewan kesayangan Anda menjadi karakter kartun yang menggemaskan dan menawan.',
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'animated dog character'
-  },
-  {
-    icon: <Rocket className="h-8 w-8 text-accent" />,
-    title: 'Potret Fantasi & Pahlawan Super',
-    description: 'Jadilah pahlawan super, ksatria dari dunia fantasi, atau penjelajah luar angkasa.',
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'man cinematic character'
-  },
-  {
-    icon: <Sparkles className="h-8 w-8 text-accent" />,
-    title: 'Edit AI Kustom',
-    description: 'Punya ide kreatif lain? Beri tahu kami, dan AI kami akan mewujudkannya.',
-    image: 'https://placehold.co/400x300.png',
-    aiHint: 'glowing particles'
-  },
-];
+const Services = ({ services: fetchedServices }: { services: Service[] }) => {
+  // Fallback to hardcoded data if fetching fails or returns nothing
+  const services = fetchedServices.length > 0 ? fetchedServices : [
+    {
+      id: 'fallback-1',
+      icon: 'Camera',
+      title: 'Adegan Supercar',
+      description: 'Posisikan diri Anda dalam adegan viral "diberhentikan polisi" dengan supercar mewah pilihan Anda.',
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'luxury car night',
+      price: 'Rp 75.000',
+      order: 1,
+    },
+    {
+      id: 'fallback-2',
+      icon: 'Video',
+      title: 'Video Karir Masa Depan',
+      description: "Lihat anak Anda sebagai astronot, ilmuwan, atau profesi impian lainnya dalam video sinematik singkat.",
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'child scientist cinematic',
+      price: 'Rp 100.000',
+      order: 2,
+    },
+    {
+      id: 'fallback-3',
+      icon: 'GraduationCap',
+      title: 'Foto Wisuda AI',
+      description: "Tidak sempat foto wisuda? Kami akan membuatkan foto yang profesional dan elegan untuk Anda.",
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'professional headshot',
+      price: 'Rp 60.000',
+      order: 3,
+    },
+    {
+      id: 'fallback-4',
+      icon: 'PawPrint',
+      title: 'Hewan Peliharaan Jadi Kartun',
+      description: 'Ubah foto hewan kesayangan Anda menjadi karakter kartun yang menggemaskan dan menawan.',
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'animated dog character',
+      price: 'Rp 65.000',
+      order: 4,
+    },
+    {
+      id: 'fallback-5',
+      icon: 'Rocket',
+      title: 'Potret Fantasi & Pahlawan Super',
+      description: 'Jadilah pahlawan super, ksatria dari dunia fantasi, atau penjelajah luar angkasa.',
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'man cinematic character',
+      price: 'Rp 85.000',
+      order: 5,
+    },
+    {
+      id: 'fallback-6',
+      icon: 'Sparkles',
+      title: 'Edit AI Kustom',
+      description: 'Punya ide kreatif lain? Beri tahu kami, dan AI kami akan mewujudkannya.',
+      image_placeholder: 'https://placehold.co/400x300.png',
+      ai_hint: 'glowing particles',
+      price: 'Hubungi Kami',
+      order: 6,
+    },
+  ];
 
-const Services = () => {
   return (
     <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-background/80 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
       <div className="container px-4 md:px-6">
@@ -61,11 +81,11 @@ const Services = () => {
           </div>
         </div>
         <div className="mx-auto grid items-start gap-8 sm:max-w-4xl md:gap-12 lg:max-w-5xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12">
-          {services.map((service, index) => (
-            <Card key={index} className="group h-full flex flex-col bg-card hover:bg-secondary/60 transition-colors duration-300">
+          {services.map((service) => (
+            <Card key={service.id} className="group h-full flex flex-col bg-card hover:bg-secondary/60 transition-colors duration-300">
               <CardHeader className="items-center">
                 <div className="transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:-rotate-12">
-                  {service.icon}
+                  {renderIcon(service.icon, { className: "h-8 w-8 text-accent" })}
                 </div>
                 <CardTitle className="mt-4 text-center">{service.title}</CardTitle>
               </CardHeader>
@@ -73,11 +93,11 @@ const Services = () => {
                 <CardDescription>{service.description}</CardDescription>
                 <div className="mt-4">
                   <Image 
-                    src={service.image} 
+                    src={service.image_placeholder} 
                     alt={service.title} 
                     width={400} 
                     height={300} 
-                    data-ai-hint={service.aiHint}
+                    data-ai-hint={service.ai_hint}
                     className="rounded-lg aspect-[4/3] object-cover"
                   />
                 </div>

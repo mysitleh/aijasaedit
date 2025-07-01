@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "firebase/firestore";
 import { app } from "@/lib/firebase";
 // Note: AI Transformation and Storage uploads are removed from this immediate action
 // to prevent timeouts and support an asynchronous workflow.
@@ -17,6 +17,51 @@ const orderSchema = z.object({
 });
 
 type OrderPayload = z.infer<typeof orderSchema>;
+
+export interface Service {
+    id: string;
+    title: string;
+    description: string;
+    price: string;
+    icon: string;
+    image_placeholder: string;
+    ai_hint: string;
+    order: number;
+}
+
+export async function getServices(): Promise<Service[]> {
+  try {
+    const servicesRef = collection(db, 'services');
+    const q = query(servicesRef, orderBy('order', 'asc'));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      console.log("No services found in Firestore. Returning default hardcoded services.");
+      return [];
+    }
+    
+    const services = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        icon: data.icon,
+        image_placeholder: data.image_placeholder,
+        ai_hint: data.ai_hint,
+        order: data.order,
+      } as Service;
+    });
+
+    return services;
+  } catch (error) {
+    console.error('Error fetching services:', error);
+    // Return empty array on error so the page can still render.
+    return [];
+  }
+}
+
 
 export async function createOrderAction(payload: OrderPayload): Promise<{
   success: boolean;
