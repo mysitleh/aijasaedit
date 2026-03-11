@@ -4,6 +4,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { getOrders, type Order, type Service, addService, deleteService } from './actions';
 import { getServices } from '../actions';
+import isEqual from 'lodash.isequal';
 import { Badge } from '@/components/ui/badge';
 import {
   Card,
@@ -48,16 +49,40 @@ export default function AdminPage() {
   const { toast } = useToast();
   const addServiceFormRef = useRef<HTMLFormElement>(null);
 
-  const fetchOrders = async () => {
-    setLoadingOrders(true);
+  const fetchOrders = async (silent = false) => {
+    if (!silent) setLoadingOrders(true);
     try {
       const fetchedOrders = await getOrders();
-      setOrders(fetchedOrders);
+      setOrders(prevOrders => {
+        // Deteksi jika ada pesanan baru (hanya jika sudah pernah ada data sebelumnya)
+        if (prevOrders.length > 0 && fetchedOrders.length > 0) {
+          const isSame = isEqual(prevOrders[0], fetchedOrders[0]);
+          if (!isSame && fetchedOrders.length >= prevOrders.length) {
+            // Ada pesanan baru masuk!
+            playNotificationSound();
+            toast({
+              title: "🚀 Pesanan Baru!",
+              description: `Baru saja masuk pesanan dari ${fetchedOrders[0].name}`,
+              variant: "default",
+            });
+          }
+        }
+        return fetchedOrders;
+      });
     } catch (error) {
       console.error('Failed to fetch orders:', error);
-      toast({ variant: 'destructive', title: 'Error', description: 'Gagal memuat pesanan.' });
+      if (!silent) toast({ variant: 'destructive', title: 'Error', description: 'Gagal memuat pesanan.' });
     } finally {
-      setLoadingOrders(false);
+      if (!silent) setLoadingOrders(false);
+    }
+  };
+
+  const playNotificationSound = () => {
+    try {
+      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+      audio.play();
+    } catch (e) {
+      console.warn("Audio play failed:", e);
     }
   };
 
@@ -77,6 +102,13 @@ export default function AdminPage() {
   useEffect(() => {
     fetchOrders();
     fetchServices();
+
+    // Polling setiap 15 detik untuk simulasi real-time notification
+    const interval = setInterval(() => {
+      fetchOrders(true);
+    }, 15000);
+
+    return () => clearInterval(interval);
   }, [toast]);
 
   const handleAddService = async (formData: FormData) => {
