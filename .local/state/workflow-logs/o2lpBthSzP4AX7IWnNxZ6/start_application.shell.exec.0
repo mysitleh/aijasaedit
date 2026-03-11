@@ -1,0 +1,25 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.1s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 3.2s (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 3817ms
+ [32m[1m✓[22m[39m Compiled in 607ms (424 modules)
+ [32m[1m✓[22m[39m Compiled /_not-found in 355ms (1215 modules)
+ GET /_next/webpack-hmr [33m404[39m in 512ms
+ [32m[1m✓[22m[39m Compiled in 612ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 781ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.

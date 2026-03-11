@@ -1,0 +1,29 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.9s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 6s (1010 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 1006ms (369 modules)
+ GET / [32m200[39m in 7456ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 134ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 1145ms (673 modules)
+ GET /favicon.ico [32m200[39m in 1365ms
+ [32m[1m✓[22m[39m Compiled /_not-found in 371ms (685 modules)
+ GET /_next/static/webpack/324c24a6ca93c7ed.webpack.hot-update.json [33m404[39m in 552ms
+ GET /_next/static/webpack/df21cca89bea79d3.webpack.hot-update.json [33m404[39m in 20ms
+ GET /_next/static/webpack/3aa73bd0da711341.webpack.hot-update.json [33m404[39m in 40ms
+ [32m[1m✓[22m[39m Compiled / in 471ms (641 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 900ms

@@ -1,0 +1,75 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1232ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 3.4s (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 4154ms
+ [32m[1m✓[22m[39m Compiled in 760ms (424 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 84ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 904ms (834 modules)
+ GET /favicon.ico [32m200[39m in 1095ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 350ms
+ GET /favicon.ico [32m200[39m in 8ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 61ms
+ GET /favicon.ico [32m200[39m in 27ms
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [32m[1m✓[22m[39m Compiled /_not-found in 660ms (1215 modules)
+ GET /_next/static/webpack/345080f60a6cbbf7.webpack.hot-update.json [33m404[39m in 845ms
+ GET /_next/static/webpack/3af458e67f9e12b8.webpack.hot-update.json [33m404[39m in 20ms
+ GET /_next/static/webpack/e617a1337cf2d6c9.webpack.hot-update.json [33m404[39m in 22ms
+ [32m[1m✓[22m[39m Compiled in 580ms (1229 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 269ms
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 274ms (835 modules)
+ GET /favicon.ico [32m200[39m in 460ms
+ [32m[1m✓[22m[39m Compiled in 1438ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 286ms
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 384ms (834 modules)
+ GET /favicon.ico [32m200[39m in 500ms
+ [32m[1m✓[22m[39m Compiled in 347ms (424 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 288ms (424 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 525ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 281ms (424 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 397ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 823ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 289ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 297ms (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.

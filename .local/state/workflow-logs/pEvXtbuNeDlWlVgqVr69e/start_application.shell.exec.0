@@ -1,0 +1,28 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1238ms
+ [37m[1m○[22m[39m Compiling /blog/[slug] ...
+ [32m[1m✓[22m[39m Compiled /blog/[slug] in 3.5s (719 modules)
+ [32m[1m✓[22m[39m Compiled in 237ms (311 modules)
+ GET /blog/5-gaya-edit-ai-paling-viral [32m200[39m in 4070ms
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 374ms (440 modules)
+ GET /favicon.ico [32m200[39m in 464ms
+ [32m[1m✓[22m[39m Compiled /blog in 342ms (740 modules)
+ [32m[1m✓[22m[39m Compiled /_not-found in 217ms (702 modules)
+ GET /_next/static/webpack/3ad46ea9f6464e98.webpack.hot-update.json [33m404[39m in 391ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 1443ms (1213 modules)
+ [32m[1m✓[22m[39m Compiled in 609ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 1247ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 494ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 370ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 338ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 243ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 266ms (425 modules)

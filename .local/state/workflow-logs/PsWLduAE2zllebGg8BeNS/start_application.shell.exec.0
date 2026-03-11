@@ -1,0 +1,23 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1245ms
+ [32m[1m✓[22m[39m Compiled /src/middleware in 169ms (117 modules)
+ [37m[1m○[22m[39m Compiling /admin/login ...
+ [32m[1m✓[22m[39m Compiled /admin/login in 2.9s (925 modules)
+ GET /admin/login [32m200[39m in 3322ms
+ [32m[1m✓[22m[39m Compiled in 404ms (389 modules)
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 243ms (568 modules)
+ GET /favicon.ico [32m200[39m in 333ms
+ [32m[1m✓[22m[39m Compiled in 563ms (960 modules)
+ [32m[1m✓[22m[39m Compiled in 601ms (1077 modules)
+ [32m[1m✓[22m[39m Compiled in 172ms (390 modules)
+ [32m[1m✓[22m[39m Compiled in 47ms (117 modules)
+ [32m[1m✓[22m[39m Compiled in 567ms (960 modules)
+ [32m[1m✓[22m[39m Compiled in 367ms (586 modules)

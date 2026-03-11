@@ -1,0 +1,139 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1268ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 3.9s (1053 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 4505ms
+ [32m[1m✓[22m[39m Compiled in 806ms (391 modules)
+ GET / [32m200[39m in 879ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 130ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 561ms (694 modules)
+ GET /favicon.ico [32m200[39m in 670ms
+ [32m[1m✓[22m[39m Compiled in 812ms (1085 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 212ms
+ GET /favicon.ico [32m200[39m in 19ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 109ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 81ms
+ [32m[1m✓[22m[39m Compiled in 366ms (391 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 364ms (391 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 798ms (1053 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET /_next/static/webpack/2de1cb86546c1448.webpack.hot-update.json [31m500[39m in 2491ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / [31m500[39m in 28ms
+ [32m[1m✓[22m[39m Compiled /_error in 351ms (579 modules)
+ [32m[1m✓[22m[39m Compiled in 207ms (579 modules)
+ GET / [31m500[39m in 9ms
+ [32m[1m✓[22m[39m Compiled in 253ms (579 modules)
+ GET / [31m500[39m in 11ms
+ [32m[1m✓[22m[39m Compiled in 257ms (579 modules)
+ GET / [31m500[39m in 12ms
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [31m500[39m in 634ms
+ GET / [31m500[39m in 15ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET / [31m500[39m in 43ms
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [31m500[39m in 51ms
+ GET / [31m500[39m in 8ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET / [31m500[39m in 8ms

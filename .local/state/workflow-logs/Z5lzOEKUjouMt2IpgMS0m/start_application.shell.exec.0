@@ -1,0 +1,29 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1279ms
+ [32m[1m✓[22m[39m Compiled /src/middleware in 175ms (117 modules)
+ [37m[1m○[22m[39m Compiling /admin-login ...
+ [32m[1m✓[22m[39m Compiled /admin-login in 2.9s (726 modules)
+ GET /admin-login?from=%2Fadmin [32m200[39m in 3368ms
+ [32m[1m✓[22m[39m Compiled in 389ms (290 modules)
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 269ms (468 modules)
+ GET /favicon.ico [32m200[39m in 383ms
+ GET /admin-login [32m200[39m in 119ms
+ GET /favicon.ico [32m200[39m in 6ms
+ [32m[1m✓[22m[39m Compiled /_not-found in 367ms (586 modules)
+ GET /_next/static/webpack/e50852598ed0ebe9.webpack.hot-update.json [33m404[39m in 538ms
+ GET /_next/static/webpack/dd0297aea32fa3da.webpack.hot-update.json [33m404[39m in 22ms
+ GET /_next/webpack-hmr [33m404[39m in 19ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 3.1s (1221 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 3965ms

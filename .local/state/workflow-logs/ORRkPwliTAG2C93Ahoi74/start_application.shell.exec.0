@@ -1,0 +1,31 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.1s
+ [37m[1m○[22m[39m Compiling /src/middleware ...
+ [32m[1m✓[22m[39m Compiled /src/middleware in 520ms (117 modules)
+ [37m[1m○[22m[39m Compiling /admin/login ...
+ [32m[1m✓[22m[39m Compiled /admin/login in 5.7s (925 modules)
+ [31m[1m⨯[22m[39m src/app/admin/login/page.tsx (14:53) @ loginAction
+ [31m[1m⨯[22m[39m TypeError: (0 , react__WEBPACK_IMPORTED_MODULE_1__.useActionState) is not a function or its return value is not iterable
+    at AdminLoginPage (./src/app/admin/login/page.tsx:31:93)
+digest: "815963239"
+[0m [90m 12 |[39m[0m
+[0m [90m 13 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mAdminLoginPage[39m() {[0m
+[0m[31m[1m>[22m[39m[90m 14 |[39m   [36mconst[39m [state[33m,[39m action[33m,[39m isPending] [33m=[39m useActionState(loginAction[33m,[39m [36mnull[39m)[33m;[39m[0m
+[0m [90m    |[39m                                                     [31m[1m^[22m[39m[0m
+[0m [90m 15 |[39m   [36mconst[39m searchParams [33m=[39m useSearchParams()[33m;[39m[0m
+[0m [90m 16 |[39m   [36mconst[39m hasConfigError [33m=[39m searchParams[33m.[39m[36mget[39m([32m'error'[39m) [33m===[39m [32m'config'[39m[33m;[39m[0m
+[0m [90m 17 |[39m[0m
+ GET /admin/login?from=%2Fadmin [31m500[39m in 6220ms
+ [32m[1m✓[22m[39m Compiled in 535ms (389 modules)
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 798ms (568 modules)
+ GET /favicon.ico [32m200[39m in 941ms
+ [32m[1m✓[22m[39m Compiled in 843ms (957 modules)

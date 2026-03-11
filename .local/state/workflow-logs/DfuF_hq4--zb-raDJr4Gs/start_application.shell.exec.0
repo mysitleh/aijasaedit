@@ -1,0 +1,30 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1301ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 3.8s (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ [32m[1m✓[22m[39m Compiled in 942ms (424 modules)
+ GET / [32m200[39m in 4877ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 1426ms (834 modules)
+ [37m[1m○[22m[39m Compiling /blog ...
+ [32m[1m✓[22m[39m Compiled /blog in 512ms (1253 modules)
+ GET /blog [32m200[39m in 746ms
+ GET /favicon.ico [32m200[39m in 14ms
+ [37m[1m○[22m[39m Compiling /admin-login ...
+ [32m[1m✓[22m[39m Compiled /admin-login in 728ms (1357 modules)
+ GET /admin-login [32m200[39m in 928ms
+ GET /favicon.ico [32m200[39m in 14ms
+ [32m[1m✓[22m[39m Compiled in 1266ms (403 modules)
+ [32m[1m✓[22m[39m Compiled in 257ms (403 modules)
+ [32m[1m✓[22m[39m Compiled in 196ms (403 modules)

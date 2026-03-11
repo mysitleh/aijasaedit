@@ -1,0 +1,53 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.3s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 7.5s (1072 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 8527ms
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [32m[1m✓[22m[39m Compiled /_not-found in 3.3s (1061 modules)
+ GET /_next/static/webpack/b35850c4ba909266.webpack.hot-update.json [33m404[39m in 3244ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 151ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 150ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 680ms (707 modules)
+ GET /favicon.ico [32m200[39m in 814ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 231ms
+ GET /favicon.ico [32m200[39m in 6ms
+ [32m[1m✓[22m[39m Compiled /blog in 488ms (1102 modules)
+ GET /blog [32m200[39m in 660ms
+ GET /favicon.ico [32m200[39m in 16ms
+ GET /_next/static/webpack/16eb534e8f06b2f0.webpack.hot-update.json [33m404[39m in 45ms
+ GET /_next/static/webpack/0fe6be558a82b19c.webpack.hot-update.json [33m404[39m in 15ms
+ GET /_next/static/webpack/b35850c4ba909266.webpack.hot-update.json [33m404[39m in 18ms
+ [32m[1m✓[22m[39m Compiled in 3.4s (1073 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 464ms
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 311ms (706 modules)
+ GET /favicon.ico [32m200[39m in 426ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 397ms
+ GET /favicon.ico [32m200[39m in 33ms
+ [32m[1m✓[22m[39m Compiled in 2.7s (1011 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.

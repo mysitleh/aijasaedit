@@ -1,0 +1,69 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.8s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 4.6s (1226 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ [32m[1m✓[22m[39m Compiled in 1050ms (424 modules)
+ GET / [32m200[39m in 5932ms
+ [37m[1m○[22m[39m Compiling /favicon.ico ...
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 1350ms (834 modules)
+ [37m[1m○[22m[39m Compiling /blog ...
+ [32m[1m✓[22m[39m Compiled /blog in 1118ms (1252 modules)
+ GET /blog [32m200[39m in 1310ms
+ GET /favicon.ico [32m200[39m in 18ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+ GET / [32m200[39m in 310ms
+ GET /favicon.ico [32m200[39m in 8ms
+ [32m[1m✓[22m[39m Compiled in 349ms (1266 modules)
+ [32m[1m✓[22m[39m Compiled in 344ms (1266 modules)
+ [32m[1m✓[22m[39m Compiled in 187ms (425 modules)
+ [32m[1m✓[22m[39m Compiled in 168ms (425 modules)
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [32m[1m✓[22m[39m Compiled /_not-found in 564ms (1269 modules)
+ GET /_next/static/webpack/5373708c828f0a45.webpack.hot-update.json [33m404[39m in 750ms
+ GET /_next/static/webpack/5cd0b70b5b8fc91e.webpack.hot-update.json [33m404[39m in 19ms
+ [32m[1m✓[22m[39m Compiled /blog/[slug] in 384ms (1264 modules)
+ [31m[1m⨯[22m[39m src/app/blog/[slug]/page.tsx (183:20) @ ArrowRight
+ [31m[1m⨯[22m[39m ReferenceError: ArrowRight is not defined
+    at eval (./src/app/blog/[slug]/page.tsx:573:121)
+    at Array.map (<anonymous>)
+    at BlogPostPage (./src/app/blog/[slug]/page.tsx:514:54)
+    at stringify (<anonymous>)
+digest: "855837298"
+[0m [90m 181 |[39m                     [33m<[39m[33mp[39m className[33m=[39m[32m"text-xs text-muted-foreground mt-0.5"[39m[33m>[39m{p[33m.[39mreadTime} · {p[33m.[39mdate}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[0m [90m 182 |[39m                   [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 183 |[39m                   [33m<[39m[33mArrowRight[39m className[33m=[39m[32m"w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0"[39m [33m/[39m[33m>[39m[0m
+[0m [90m     |[39m                    [31m[1m^[22m[39m[0m
+[0m [90m 184 |[39m                 [33m<[39m[33m/[39m[33mLink[39m[33m>[39m[0m
+[0m [90m 185 |[39m               ))}[0m
+[0m [90m 186 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ [31m[1m⨯[22m[39m src/app/blog/[slug]/page.tsx (183:20) @ ArrowRight
+ [31m[1m⨯[22m[39m ReferenceError: ArrowRight is not defined
+    at eval (./src/app/blog/[slug]/page.tsx:573:121)
+    at Array.map (<anonymous>)
+    at BlogPostPage (./src/app/blog/[slug]/page.tsx:514:54)
+    at stringify (<anonymous>)
+digest: "855837298"
+[0m [90m 181 |[39m                     [33m<[39m[33mp[39m className[33m=[39m[32m"text-xs text-muted-foreground mt-0.5"[39m[33m>[39m{p[33m.[39mreadTime} · {p[33m.[39mdate}[33m<[39m[33m/[39m[33mp[39m[33m>[39m[0m
+[0m [90m 182 |[39m                   [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 183 |[39m                   [33m<[39m[33mArrowRight[39m className[33m=[39m[32m"w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0"[39m [33m/[39m[33m>[39m[0m
+[0m [90m     |[39m                    [31m[1m^[22m[39m[0m
+[0m [90m 184 |[39m                 [33m<[39m[33m/[39m[33mLink[39m[33m>[39m[0m
+[0m [90m 185 |[39m               ))}[0m
+[0m [90m 186 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+ GET /blog/5-gaya-edit-ai-paling-viral [31m500[39m in 944ms
+ GET /favicon.ico [32m200[39m in 28ms
+ [32m[1m✓[22m[39m Compiled in 310ms (1278 modules)
+ [32m[1m✓[22m[39m Compiled in 1134ms (1278 modules)

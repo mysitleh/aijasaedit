@@ -1,0 +1,179 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.3s
+ [37m[1m○[22m[39m Compiling / ...
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET / [31m500[39m in 9470ms
+<w> [1m[33m[webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz_' -> '/home/runner/workspace/.next/cache/webpack/client-development-fallback/0.pack.gz'[39m[22m
+ GET / [31m500[39m in 16ms
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [31m500[39m in 310ms
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [31m500[39m in 100ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET / [31m500[39m in 10ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET / [31m500[39m in 7ms
+ [31m[1m⨯[22m[39m ./src/components/landing/faq-section.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'Edit'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/faq-section.tsx[0m:29:1]
+ [2m29[0m │   },
+ [2m30[0m │   {
+ [2m31[0m │     q: "Bisakah saya minta gaya atau konsep yang tidak ada di daftar layanan?",
+ [2m32[0m │     a: "Tentu! Pilih layanan "Edit AI Kustom" dan jelaskan konsep Anda di kolom deskripsi. Tim kami akan menghubungi Anda melalui WhatsApp untuk mendiskusikan detail dan harga.",
+    · [38;2;246;87;248m                              ────[0m
+ [2m33[0m │   },
+ [2m34[0m │   {
+ [2m35[0m │     q: "Apakah bisa memesan lebih dari satu foto sekaligus?",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/faq-section.tsx
+./src/app/page.tsx
+ GET /blog/5-gaya-edit-ai-paling-viral-di-2025 [31m500[39m in 743ms
+ [32m[1m✓[22m[39m Compiled /blog/[slug] in 1999ms (1345 modules)
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'clientModules')
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/compiled/next-server/app-page.runtime.dev.js:39:25703
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/trace/tracer.js:191:62
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/context/NoopContextManager.js:25:19[90m)[39m
+    at ContextAPI.with [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/api/context.js:60:46[90m)[39m
+    at NoopTracer.startActiveSpan [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/trace/NoopTracer.js:65:31[90m)[39m
+    at ProxyTracer.startActiveSpan [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/trace/ProxyTracer.js:36:24[90m)[39m
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/trace/tracer.js:122:103
+    at NoopContextManager.with [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/context/NoopContextManager.js:25:19[90m)[39m
+    at ContextAPI.with [90m(/home/runner/workspace/[39mnode_modules/[4m@opentelemetry/api[24m/build/src/api/context.js:60:46[90m)[39m
+    at NextTracerImpl.trace [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/trace/tracer.js:122:28[90m)[39m
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/trace/tracer.js:191:31
+    at r3 [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/compiled/next-server/app-page.runtime.dev.js:41:1678[90m)[39m
+    at async doRender [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/base-server.js:1427:30[90m)[39m
+    at async cacheEntry.responseCache.get.routeKind [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/base-server.js:1588:28[90m)[39m {
+  page: [32m'/'[39m
+}
+ [32m[1m✓[22m[39m Compiled (1331 modules)
+ GET / [31m500[39m in 414ms
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [33m404[39m in 2178ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 359ms
+ GET /blog/5-gaya-edit-ai-paling-viral-di-2025 [33m404[39m in 399ms
+ GET /blog/5-gaya-edit-ai-paling-viral [32m200[39m in 102ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 89ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 62ms
+ GET /blog/5-gaya-edit-ai-paling-viral [32m200[39m in 58ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 84ms
+ GET /blog/5-gaya-edit-ai-paling-viral [32m200[39m in 61ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 95ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 84ms
+ GET /_next/static/webpack/9ce2381746e3d54a.webpack.hot-update.json [33m404[39m in 55ms
+ GET /_next/static/webpack/a025b0ccdf888323.webpack.hot-update.json [33m404[39m in 16ms
+ GET /_next/static/webpack/bc9e7281e99317da.webpack.hot-update.json [33m404[39m in 18ms
+ GET /_next/static/webpack/2f2b429da017d74d.webpack.hot-update.json [33m404[39m in 19ms
+ GET /_next/static/webpack/2de1cb86546c1448.webpack.hot-update.json [33m404[39m in 17ms
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 63ms
+ [32m[1m✓[22m[39m Compiled in 415ms (584 modules)
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 895ms (1296 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [32m[1m✓[22m[39m Compiled in 1144ms (1299 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 189ms

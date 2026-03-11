@@ -1,0 +1,30 @@
+
+> ai-jasa-edit@0.1.0 dev
+> next dev -p 5000 -H 0.0.0.0
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.29[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1376ms
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [32m[1m✓[22m[39m Compiled /_not-found in 3s (625 modules)
+ GET /_next/static/webpack/bf34990ce6eb933f.webpack.hot-update.json [33m404[39m in 3665ms
+ [32m[1m✓[22m[39m Compiled in 581ms (297 modules)
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 1557ms (1001 modules)
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 2097ms
+ [32m[1m✓[22m[39m Compiled /favicon.ico in 403ms (675 modules)
+ GET /favicon.ico [32m200[39m in 554ms
+Firebase configuration is incomplete. Firebase services will be disabled. Please check your .env file and follow the setup instructions in README.md.
+Firebase is not configured. Skipping fetching services and returning empty array.
+ GET / [32m200[39m in 328ms
+ GET /favicon.ico [32m200[39m in 8ms
+ GET /_next/static/webpack/7bed53dc1c0a4397.webpack.hot-update.json [33m404[39m in 39ms
+ GET /_next/static/webpack/7ccad3c856e9963d.webpack.hot-update.json [33m404[39m in 21ms
+ GET /_next/static/webpack/f1723b96cc9293f3.webpack.hot-update.json [33m404[39m in 21ms
+ GET /_next/static/webpack/00d04b89005d8e49.webpack.hot-update.json [33m404[39m in 23ms
+ GET /_next/static/webpack/d7cd040ee6987580.webpack.hot-update.json [33m404[39m in 20ms
