@@ -213,32 +213,68 @@ export default function OrderForm({
     setIsSubmitting(true);
     setFileError(null);
 
+    console.log("Memulai pengunggahan file:", file.name, file.size);
+
+    // Validasi ukuran file di sisi client (15MB)
+    if (file.size > 15 * 1024 * 1024) {
+      setFileError("Ukuran file terlalu besar. Maksimal 15MB.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
+      // Pastikan Firebase sudah siap
+      if (!storage || !storage.app) {
+        throw new Error("Firebase Storage tidak terdeteksi. Periksa konfigurasi .env");
+      }
+
       let fileUrl = "";
       
       // 1. Upload file ke Firebase Storage
       const fileRef = ref(storage, `orders/${Date.now()}_${file.name}`);
       const uploadResult = await uploadBytes(fileRef, file);
       fileUrl = await getDownloadURL(uploadResult.ref);
+      
+      console.log("File berhasil diunggah, URL:", fileUrl);
 
       // 2. Simpan order ke Firestore via Server Action
       const result = await createOrderAction({
-        name: personal?.name || "",
-        contact: personal?.whatsapp || "",
+        name: personal?.name || "Customer",
+        contact: personal?.whatsapp || "No Contact",
         service: effectiveServiceTitle,
         description: data.description,
         fileUrl: fileUrl,
       });
 
       if (result.success) {
+        console.log("Pesanan berhasil dicatat di Firestore.");
         setDescription(data.description);
         setStep(4);
+        toast({
+          title: "Sukses!",
+          description: "Pesanan Anda telah kami terima.",
+        });
       } else {
-        setFileError(result.error || "Gagal membuat pesanan. Silakan coba lagi.");
+        console.error("Gagal simpan Firestore:", result.error);
+        setFileError(result.error || "Gagal mencatat pesanan. Silakan hubungi admin.");
+        toast({
+          variant: "destructive",
+          title: "Gagal Mengirim",
+          description: result.error || "Gagal mencatat pesanan.",
+        });
       }
-    } catch (error) {
-      console.error("Order submission error:", error);
-      setFileError("Terjadi kesalahan saat mengunggah pesanan. Pastikan koneksi internet stabil.");
+    } catch (error: any) {
+      console.error("Proses Pesanan Gagal:", error);
+      const msg = error.message?.includes("storage/unauthorized") 
+        ? "Izin ditolak oleh Firebase Storage. Pastikan Security Rules sudah diset." 
+        : "Terjadi kesalahan koneksi. Pastikan internet stabil dan periksa konfigurasi Firebase.";
+      
+      setFileError(msg);
+      toast({
+        variant: "destructive",
+        title: "Koneksi Bermasalah",
+        description: msg,
+      });
     } finally {
       setIsSubmitting(false);
     }
