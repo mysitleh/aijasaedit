@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { X, MessageCircle } from "lucide-react";
-import { SITE_CONFIG } from "@/data/site-config";
 import Image from "next/image";
 
 const WA_MESSAGE = encodeURIComponent(
   "Halo AI Jasa Edit! 👋 Saya tertarik dengan layanan edit foto/video AI. Boleh saya tanya-tanya dulu?"
 );
 
-const WA_URL = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${WA_MESSAGE}`;
+export default function WhatsAppChat({ whatsappNumber }: { whatsappNumber: string }) {
+  const cleanNumber = whatsappNumber.replace(/[^0-9]/g, '');
+  const WA_URL = `https://wa.me/${cleanNumber}?text=${WA_MESSAGE}`;
 
-export default function WhatsAppChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAutoOpened, setHasAutoOpened] = useState(false);

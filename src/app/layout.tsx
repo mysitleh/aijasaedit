@@ -56,11 +56,15 @@ export const metadata: Metadata = {
 
 
 
-export default function RootLayout({
+import { getSiteSettings } from "./actions/settings";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${poppins.variable} font-body antialiased`}>
@@ -74,7 +78,7 @@ export default function RootLayout({
             {children}
             <Toaster />
             <ScrollToTopButton />
-            <WhatsAppChat />
+            <WhatsAppChat whatsappNumber={settings.whatsappNumber} />
         </ThemeProvider>
       </body>
     </html>

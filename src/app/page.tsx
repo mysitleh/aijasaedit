@@ -9,9 +9,12 @@ import OrderForm from "@/components/landing/order-form";
 import Footer from "@/components/landing/footer";
 import { LocalBusinessJsonLd, ServicesJsonLd } from "@/components/seo/json-ld";
 import { getServices, type Service } from "./actions";
+import { getSiteSettings } from "./actions/settings";
+import { type SiteSettings, DEFAULT_SETTINGS } from "@/types/settings";
 
 export default async function Home() {
   const services: Service[] = await getServices();
+  const settings: SiteSettings = await getSiteSettings();
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -39,7 +42,7 @@ export default async function Home() {
               </p>
             </div>
             <div className="mx-auto max-w-2xl">
-              <OrderForm services={services} />
+              <OrderForm services={services} settings={settings} />
             </div>
           </div>
         </section>

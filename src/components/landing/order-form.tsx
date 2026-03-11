@@ -124,7 +124,15 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-export default function OrderForm({ services: firebaseServices }: { services: Service[] }) {
+import type { SiteSettings } from "@/types/settings";
+
+export default function OrderForm({ 
+  services: firebaseServices,
+  settings 
+}: { 
+  services: Service[],
+  settings: SiteSettings 
+}) {
   const services = firebaseServices.length > 0 ? firebaseServices : HARDCODED_SERVICES;
 
   const [step, setStep] = useState(1);
@@ -220,7 +228,9 @@ export default function OrderForm({ services: firebaseServices }: { services: Se
 
   const openWhatsApp = () => {
     const msg = buildWhatsAppMessage();
-    window.open(`https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${msg}`, "_blank");
+    // Gunakan nomor WA dari settings yang bisa diubah via Admin
+    const cleanNumber = settings.whatsappNumber.replace(/[^0-9]/g, '');
+    window.open(`https://wa.me/${cleanNumber}?text=${msg}`, "_blank");
   };
 
   return (
@@ -582,18 +592,18 @@ export default function OrderForm({ services: firebaseServices }: { services: Se
                 <div className="space-y-2 text-sm">
                   <div>
                     <p className="text-xs text-muted-foreground">Bank</p>
-                    <p className="font-semibold">{SITE_CONFIG.payment.bank.name}</p>
+                    <p className="font-semibold">{settings.bankName}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Nomor Rekening</p>
                     <div className="flex items-center">
-                      <p className="font-mono font-bold tracking-wider">{SITE_CONFIG.payment.bank.account}</p>
-                      <CopyButton text={SITE_CONFIG.payment.bank.account.replace(/-/g, "")} />
+                      <p className="font-mono font-bold tracking-wider">{settings.bankAccount}</p>
+                      <CopyButton text={settings.bankAccount.replace(/-/g, "")} />
                     </div>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Atas Nama</p>
-                    <p className="font-semibold">{SITE_CONFIG.payment.bank.holder}</p>
+                    <p className="font-semibold">{settings.bankHolder}</p>
                   </div>
                 </div>
               </div>
@@ -606,13 +616,15 @@ export default function OrderForm({ services: firebaseServices }: { services: Se
                 <p className="text-xs text-muted-foreground text-center">
                   Scan dengan GoPay, OVO, Dana, ShopeePay, dll.
                 </p>
-                <Image
-                  src={SITE_CONFIG.payment.qris.image}
-                  alt="QRIS Pembayaran"
-                  width={140}
-                  height={140}
-                  className="rounded-lg border p-1 bg-white"
-                />
+                {settings.qrisImage && (
+                  <Image
+                    src={settings.qrisImage}
+                    alt="QRIS Pembayaran"
+                    width={140}
+                    height={140}
+                    className="rounded-lg border p-1 bg-white"
+                  />
+                )}
               </div>
             </div>
 
