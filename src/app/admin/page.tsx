@@ -229,7 +229,7 @@ export default function AdminPage() {
               </div>
               <div className="space-y-1">
                 <Label htmlFor="image_placeholder">URL Gambar</Label>
-                <Input id="image_placeholder" name="image_placeholder" placeholder="https://placehold.co/400x300.png" disabled={isSubmitting} />
+                <Input id="image_placeholder" name="image_placeholder" placeholder="https://placehold.co/400x300.webp" disabled={isSubmitting} />
               </div>
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <PlusCircle className="mr-2 h-4 w-4" />}

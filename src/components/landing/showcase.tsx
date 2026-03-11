@@ -4,26 +4,26 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const showcaseItems = [
   {
-    before: { src: "/showcase/superhero-before.png", hint: "man portrait" },
-    after: { src: "/showcase/superhero-after.png", hint: "man cinematic character" },
+    before: { src: "/showcase/superhero-before.webp", hint: "man portrait" },
+    after: { src: "/showcase/superhero-after.webp", hint: "man cinematic character" },
     title: "Dari Santai Jadi Pahlawan Super",
     description: "Mengubah swafoto menjadi poster film pahlawan super.",
   },
   {
-    before: { src: "/showcase/cyberpunk-before.png", hint: "modern architecture" },
-    after: { src: "/showcase/cyberpunk-after.png", hint: "futuristic cityscape" },
+    before: { src: "/showcase/cyberpunk-before.webp", hint: "modern architecture" },
+    after: { src: "/showcase/cyberpunk-after.webp", hint: "futuristic cityscape" },
     title: "Jalan Kota Jadi Cyberpunk",
     description: "Mengubah pemandangan kota menjadi dunia cyberpunk yang futuristik.",
   },
   {
-    before: { src: "/showcase/lukisan-before.png", hint: "woman profile" },
-    after: { src: "/showcase/lukisan-after.png", hint: "woman renaissance painting" },
+    before: { src: "/showcase/lukisan-before.webp", hint: "woman profile" },
+    after: { src: "/showcase/lukisan-after.webp", hint: "woman renaissance painting" },
     title: "Potret Jadi Lukisan Klasik",
     description: "Menata ulang potret modern menjadi sebuah mahakarya klasik.",
   },
   {
-    before: { src: "/showcase/kartun-before.png", hint: "dog portrait studio" },
-    after: { src: "/showcase/kartun-after.png", hint: "animated dog character" },
+    before: { src: "/showcase/kartun-before.webp", hint: "dog portrait studio" },
+    after: { src: "/showcase/kartun-after.webp", hint: "animated dog character" },
     title: "Hewan Jadi Karakter Kartun",
     description: "Mengubah hewan peliharaan kesayangan menjadi karakter kartun yang menggemaskan.",
   },

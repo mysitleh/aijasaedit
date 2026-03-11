@@ -89,7 +89,7 @@ export async function addService(formData: FormData) {
     const rawData = Object.fromEntries(formData.entries());
 
     if (rawData.image_placeholder === '') {
-        rawData.image_placeholder = 'https://placehold.co/400x300.png';
+        rawData.image_placeholder = 'https://placehold.co/400x300.webp';
     }
     
     const validation = addServiceSchema.safeParse(rawData);

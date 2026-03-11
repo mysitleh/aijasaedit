@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
           <div className="w-full max-w-sm mx-auto lg:max-w-none lg:order-last">
             <Image
-              src="/hero-image.png"
+              src="/hero-image.webp"
               data-ai-hint="elegant tech lines"
               alt="AI Transformation Hero Image"
               width={540}

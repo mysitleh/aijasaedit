@@ -10,7 +10,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 export async function createBlogPost(formData: FormData): Promise<{ success: boolean; error?: string; slug?: string }> {
   const title = (formData.get('title') as string)?.trim();
   const excerpt = (formData.get('excerpt') as string)?.trim();
-  const coverImage = (formData.get('coverImage') as string)?.trim() || '/blog/cover-gaya-viral.png';
+  const coverImage = (formData.get('coverImage') as string)?.trim() || '/blog/cover-gaya-viral.webp';
   const category = (formData.get('category') as string)?.trim();
   const readTime = (formData.get('readTime') as string)?.trim() || '3 menit';
   const content = (formData.get('content') as string)?.trim();

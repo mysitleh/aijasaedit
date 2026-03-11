@@ -4,37 +4,37 @@ import { Camera, Sparkles } from "lucide-react";
 import Image from "next/image";
 
 const stylesRow1 = [
-  { name: "Monokrom", img: "/styles/monokrom.png" },
-  { name: "Blok warna", img: "/styles/blok-warna.png" },
-  { name: "Runway", img: "/styles/runway.png" },
-  { name: "Risograf", img: "/styles/risograf.png" },
-  { name: "Technicolor", img: "/styles/technicolor.png" },
-  { name: "Tanah liat gotik", img: "/styles/tanah-liat-gotik.png" },
-  { name: "Sketsa", img: "/styles/sketsa.png" },
-  { name: "Sinematik", img: "/styles/sinematik.png" },
-  { name: "Steampunk", img: "/styles/steampunk.png" },
-  { name: "Matahari terbit", img: "/styles/matahari-terbit.png" },
-  { name: "Seni AI", img: "/styles/seni-ai.png" },
-  { name: "Dunia Vaporwave", img: "/styles/vaporwave.png" },
-  { name: "Potret Glitch", img: "/styles/potret-glitch.png" },
-  { name: "Y2K Aesthetic", img: "/styles/y2k.png" },
+  { name: "Monokrom", img: "/styles/monokrom.webp" },
+  { name: "Blok warna", img: "/styles/blok-warna.webp" },
+  { name: "Runway", img: "/styles/runway.webp" },
+  { name: "Risograf", img: "/styles/risograf.webp" },
+  { name: "Technicolor", img: "/styles/technicolor.webp" },
+  { name: "Tanah liat gotik", img: "/styles/tanah-liat-gotik.webp" },
+  { name: "Sketsa", img: "/styles/sketsa.webp" },
+  { name: "Sinematik", img: "/styles/sinematik.webp" },
+  { name: "Steampunk", img: "/styles/steampunk.webp" },
+  { name: "Matahari terbit", img: "/styles/matahari-terbit.webp" },
+  { name: "Seni AI", img: "/styles/seni-ai.webp" },
+  { name: "Dunia Vaporwave", img: "/styles/vaporwave.webp" },
+  { name: "Potret Glitch", img: "/styles/potret-glitch.webp" },
+  { name: "Y2K Aesthetic", img: "/styles/y2k.webp" },
 ];
 
 const stylesRow2 = [
-  { name: "Dinamit", img: "/styles/dinamit.png" },
-  { name: "Salon", img: "/styles/salon.png" },
-  { name: "Papyrus Mesir", img: "/styles/papyrus.png" },
-  { name: "Mozaik Kaca Romawi", img: "/styles/mozaik.png" },
-  { name: "Kustom Vektorial", img: "/styles/vektorial.png" },
-  { name: "Seni Jalaan Graffiti", img: "/styles/graffiti.png" },
-  { name: "Petarung mitos", img: "/styles/petarung-mitos.png" },
-  { name: "Surealis", img: "/styles/surealis.png" },
-  { name: "Pin enamel", img: "/styles/pin-enamel.png" },
-  { name: "Cyborg", img: "/styles/cyborg.png" },
-  { name: "Potret halus", img: "/styles/potret-halus.png" },
-  { name: "Kartun lama", img: "/styles/kartun-lama.png" },
-  { name: "Lukisan minyak", img: "/styles/lukisan-minyak.png" },
-  { name: "Anime", img: "/styles/anime.png" },
+  { name: "Dinamit", img: "/styles/dinamit.webp" },
+  { name: "Salon", img: "/styles/salon.webp" },
+  { name: "Papyrus Mesir", img: "/styles/papyrus.webp" },
+  { name: "Mozaik Kaca Romawi", img: "/styles/mozaik.webp" },
+  { name: "Kustom Vektorial", img: "/styles/vektorial.webp" },
+  { name: "Seni Jalaan Graffiti", img: "/styles/graffiti.webp" },
+  { name: "Petarung mitos", img: "/styles/petarung-mitos.webp" },
+  { name: "Surealis", img: "/styles/surealis.webp" },
+  { name: "Pin enamel", img: "/styles/pin-enamel.webp" },
+  { name: "Cyborg", img: "/styles/cyborg.webp" },
+  { name: "Potret halus", img: "/styles/potret-halus.webp" },
+  { name: "Kartun lama", img: "/styles/kartun-lama.webp" },
+  { name: "Lukisan minyak", img: "/styles/lukisan-minyak.webp" },
+  { name: "Anime", img: "/styles/anime.webp" },
 ];
 
 type StyleItem = { name: string; img: string };
@@ -107,9 +107,9 @@ const StyleGallery = () => {
 
         <div className="mt-6 md:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
           {[
-            { src: "/style-gallery-1.png", label: "Koleksi Gaya Modern" },
-            { src: "/style-gallery-2.png", label: "Gaya Historis & Artistik" },
-            { src: "/style-gallery-3.png", label: "Semua Gaya Tersedia" },
+            { src: "/style-gallery-1.webp", label: "Koleksi Gaya Modern" },
+            { src: "/style-gallery-2.webp", label: "Gaya Historis & Artistik" },
+            { src: "/style-gallery-3.webp", label: "Semua Gaya Tersedia" },
           ].map((item, i) => (
             <div key={i} className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10 group cursor-pointer">
               <img src={item.src} alt={item.label} className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-500" />

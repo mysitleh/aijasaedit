@@ -105,7 +105,7 @@ export default function AdminBlogPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <Label htmlFor="coverImage">URL Gambar Cover</Label>
-                  <Input id="coverImage" name="coverImage" placeholder="/blog/nama-gambar.png" disabled={submitting} />
+                  <Input id="coverImage" name="coverImage" placeholder="/blog/nama-gambar.webp" disabled={submitting} />
                   <p className="text-xs text-muted-foreground">Kosongkan untuk pakai gambar default</p>
                 </div>
                 <div className="space-y-1">

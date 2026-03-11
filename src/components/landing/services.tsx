@@ -5,12 +5,12 @@ import { renderIcon } from "@/components/icons/icon-map";
 
 const Services = ({ services: fetchedServices }: { services: Service[] }) => {
   const services = fetchedServices.length > 0 ? fetchedServices : [
-    { id: 'f1', icon: 'Camera', title: 'Adegan Supercar', description: 'Posisikan diri Anda dalam adegan viral "diberhentikan polisi" dengan supercar mewah pilihan Anda.', image_placeholder: '/services/supercar.png', ai_hint: 'luxury car night', price: 'Rp 75.000', order: 1 },
-    { id: 'f2', icon: 'Video', title: 'Video Karir Masa Depan', description: "Lihat anak Anda sebagai astronot, ilmuwan, atau profesi impian lainnya dalam video sinematik singkat.", image_placeholder: '/services/astronaut.png', ai_hint: 'child scientist cinematic', price: 'Rp 100.000', order: 2 },
-    { id: 'f3', icon: 'GraduationCap', title: 'Foto Wisuda AI', description: "Tidak sempat foto wisuda? Kami akan membuatkan foto yang profesional dan elegan untuk Anda.", image_placeholder: '/services/wisuda.png', ai_hint: 'professional headshot', price: 'Rp 60.000', order: 3 },
-    { id: 'f4', icon: 'PawPrint', title: 'Hewan Peliharaan Jadi Kartun', description: 'Ubah foto hewan kesayangan Anda menjadi karakter kartun yang menggemaskan dan menawan.', image_placeholder: '/services/cartoon-pet.png', ai_hint: 'animated dog character', price: 'Rp 65.000', order: 4 },
-    { id: 'f5', icon: 'Rocket', title: 'Potret Fantasi & Pahlawan Super', description: 'Jadilah pahlawan super, ksatria dari dunia fantasi, atau penjelajah luar angkasa.', image_placeholder: '/services/superhero.png', ai_hint: 'man cinematic character', price: 'Rp 85.000', order: 5 },
-    { id: 'f6', icon: 'Sparkles', title: 'Edit AI Kustom', description: 'Punya ide kreatif lain? Beri tahu kami, dan AI kami akan mewujudkannya.', image_placeholder: '/services/custom-ai.png', ai_hint: 'glowing particles', price: 'Hubungi Kami', order: 6 },
+    { id: 'f1', icon: 'Camera', title: 'Adegan Supercar', description: 'Posisikan diri Anda dalam adegan viral "diberhentikan polisi" dengan supercar mewah pilihan Anda.', image_placeholder: '/services/supercar.webp', ai_hint: 'luxury car night', price: 'Rp 75.000', order: 1 },
+    { id: 'f2', icon: 'Video', title: 'Video Karir Masa Depan', description: "Lihat anak Anda sebagai astronot, ilmuwan, atau profesi impian lainnya dalam video sinematik singkat.", image_placeholder: '/services/astronaut.webp', ai_hint: 'child scientist cinematic', price: 'Rp 100.000', order: 2 },
+    { id: 'f3', icon: 'GraduationCap', title: 'Foto Wisuda AI', description: "Tidak sempat foto wisuda? Kami akan membuatkan foto yang profesional dan elegan untuk Anda.", image_placeholder: '/services/wisuda.webp', ai_hint: 'professional headshot', price: 'Rp 60.000', order: 3 },
+    { id: 'f4', icon: 'PawPrint', title: 'Hewan Peliharaan Jadi Kartun', description: 'Ubah foto hewan kesayangan Anda menjadi karakter kartun yang menggemaskan dan menawan.', image_placeholder: '/services/cartoon-pet.webp', ai_hint: 'animated dog character', price: 'Rp 65.000', order: 4 },
+    { id: 'f5', icon: 'Rocket', title: 'Potret Fantasi & Pahlawan Super', description: 'Jadilah pahlawan super, ksatria dari dunia fantasi, atau penjelajah luar angkasa.', image_placeholder: '/services/superhero.webp', ai_hint: 'man cinematic character', price: 'Rp 85.000', order: 5 },
+    { id: 'f6', icon: 'Sparkles', title: 'Edit AI Kustom', description: 'Punya ide kreatif lain? Beri tahu kami, dan AI kami akan mewujudkannya.', image_placeholder: '/services/custom-ai.webp', ai_hint: 'glowing particles', price: 'Hubungi Kami', order: 6 },
   ];
 
   return (
