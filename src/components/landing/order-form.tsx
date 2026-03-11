@@ -31,9 +31,13 @@ import {
   CreditCard,
   ImageIcon,
   PenLine,
+  Loader2,
 } from "lucide-react";
 import type { Service } from "@/app/actions";
+import { createOrderAction } from "@/app/actions";
 import { HARDCODED_SERVICES, SITE_CONFIG } from "@/data/site-config";
+import { storage } from "@/lib/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const STEPS = [
   { id: 1, label: "Layanan", icon: Sparkles },
@@ -145,6 +149,7 @@ export default function OrderForm({
   const [personal, setPersonal] = useState<PersonalValues | null>(null);
   const [description, setDescription] = useState("");
   const [fileError, setFileError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const effectiveServiceTitle = isOtherSelected
     ? customServiceName || "Layanan Lainnya"
@@ -199,13 +204,44 @@ export default function OrderForm({
     setStep(3);
   };
 
-  const onDetailSubmit = (data: DetailValues) => {
+  const onDetailSubmit = async (data: DetailValues) => {
     if (!file) {
       setFileError("Silakan unggah foto atau video Anda.");
       return;
     }
-    setDescription(data.description);
-    setStep(4);
+    
+    setIsSubmitting(true);
+    setFileError(null);
+
+    try {
+      let fileUrl = "";
+      
+      // 1. Upload file ke Firebase Storage
+      const fileRef = ref(storage, `orders/${Date.now()}_${file.name}`);
+      const uploadResult = await uploadBytes(fileRef, file);
+      fileUrl = await getDownloadURL(uploadResult.ref);
+
+      // 2. Simpan order ke Firestore via Server Action
+      const result = await createOrderAction({
+        name: personal?.name || "",
+        contact: personal?.whatsapp || "",
+        service: effectiveServiceTitle,
+        description: data.description,
+        fileUrl: fileUrl,
+      });
+
+      if (result.success) {
+        setDescription(data.description);
+        setStep(4);
+      } else {
+        setFileError(result.error || "Gagal membuat pesanan. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Order submission error:", error);
+      setFileError("Terjadi kesalahan saat mengunggah pesanan. Pastikan koneksi internet stabil.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const buildWhatsAppMessage = () => {
@@ -551,8 +587,17 @@ export default function OrderForm({
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" /> Kembali
                   </Button>
-                  <Button type="submit" className="flex-1">
-                    Lanjut ke Pembayaran <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button type="submit" className="flex-1" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Mengirim Pesanan...
+                      </>
+                    ) : (
+                      <>
+                        Lanjut ke Pembayaran <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </form>

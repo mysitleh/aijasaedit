@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { getOrders, type Order, type Service, addService, deleteService } from './actions';
+import { getOrders, type Order, type Service, addService, deleteService, updateOrderStatus } from './actions';
 import { getServices } from '../actions';
 import isEqual from 'lodash.isequal';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from '@/components/ui/skeleton';
 import { format } from 'date-fns';
-import { Trash2, PlusCircle, Loader2 } from 'lucide-react';
+import { Trash2, PlusCircle, Loader2, MessageCircle, ExternalLink, PenLine, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -125,6 +125,7 @@ export default function AdminPage() {
   };
 
   const handleDeleteService = async (id: string) => {
+    if (!confirm("Hapus layanan ini?")) return;
     setDeletingServiceId(id);
     const result = await deleteService(id);
     if (result.success) {
@@ -136,8 +137,70 @@ export default function AdminPage() {
     setDeletingServiceId(null);
   };
 
+  const handleStatusUpdate = async (orderId: string, newStatus: string) => {
+    try {
+      const result = await updateOrderStatus(orderId, newStatus);
+      if (result.success) {
+        toast({ title: 'Sukses', description: `Status pesanan berhasil diperbarui menjadi ${newStatus}.` });
+        // Update local state to show change immediately
+        setOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
+      } else {
+        toast({ variant: 'destructive', title: 'Error', description: result.error });
+      }
+    } catch (error) {
+      toast({ variant: 'destructive', title: 'Error', description: 'Gagal memperbarui status.' });
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'pending_payment': return 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20';
+      case 'processing': return 'bg-blue-500/10 text-blue-600 border-blue-500/20';
+      case 'completed': return 'bg-green-500/10 text-green-600 border-green-500/20';
+      case 'cancelled': return 'bg-red-500/10 text-red-600 border-red-500/20';
+      default: return '';
+    }
+  };
+
   return (
-    <>
+    <div className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Pesanan</CardTitle>
+            <PenLine className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{orders.length}</div>
+            <p className="text-xs text-muted-foreground">Akumulasi pesanan masuk</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pending Payment</CardTitle>
+            <CreditCard className="h-4 w-4 text-yellow-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {orders.filter(o => o.status === 'pending_payment').length}
+            </div>
+            <p className="text-xs text-muted-foreground">Menunggu bukti transfer</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Processing</CardTitle>
+            <Loader2 className="h-4 w-4 text-blue-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {orders.filter(o => o.status === 'processing').length}
+            </div>
+            <p className="text-xs text-muted-foreground">Pesanan sedang dikerjakan</p>
+          </CardContent>
+        </Card>
+      </div>
+
       <Card>
         <CardHeader>
           <CardTitle>Incoming Orders</CardTitle>
@@ -151,12 +214,11 @@ export default function AdminPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="min-w-[200px]">Created At</TableHead>
-                  <TableHead className="min-w-[150px]">Name</TableHead>
-                  <TableHead className="min-w-[150px]">Contact</TableHead>
-                  <TableHead className="min-w-[180px]">Service</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="min-w-[250px]">Message</TableHead>
-                  <TableHead>File</TableHead>
+                  <TableHead className="min-w-[150px]">Kontak</TableHead>
+                  <TableHead className="min-w-[180px]">Layanan</TableHead>
+                  <TableHead className="min-w-[150px]">Status</TableHead>
+                  <TableHead className="min-w-[250px]">Pesan</TableHead>
+                  <TableHead>Aksi</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -178,20 +240,35 @@ export default function AdminPage() {
                       <TableCell>{order.contact}</TableCell>
                       <TableCell>{order.service}</TableCell>
                       <TableCell>
-                        <Badge variant={order.status === 'pending_payment' ? 'default' : 'secondary'} className={order.status === 'pending_payment' ? 'bg-yellow-500/80 text-yellow-50 hover:bg-yellow-500/90' : ''}>
-                          {order.status.replace(/_/g, ' ').toLocaleUpperCase()}
-                        </Badge>
+                        <Select 
+                          defaultValue={order.status} 
+                          onValueChange={(value) => handleStatusUpdate(order.id, value)}
+                        >
+                          <SelectTrigger className={`h-8 w-[140px] text-xs font-bold ${getStatusColor(order.status)}`}>
+                            <SelectValue placeholder="Status" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pending_payment">PENDING PAYMENT</SelectItem>
+                            <SelectItem value="processing">PROCESSING</SelectItem>
+                            <SelectItem value="completed">COMPLETED</SelectItem>
+                            <SelectItem value="cancelled">CANCELLED</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </TableCell>
                       <TableCell className="max-w-[300px] truncate" title={order.message}>{order.message}</TableCell>
                       <TableCell>
-                        <a
-                          href={order.file_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary hover:underline"
-                        >
-                          View
-                        </a>
+                        <div className="flex items-center gap-2">
+                          <Button variant="outline" size="sm" asChild className="h-8 px-2">
+                            <a href={order.file_url} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-3.5 w-3.5 mr-1" /> File
+                            </a>
+                          </Button>
+                          <Button variant="outline" size="sm" asChild className="h-8 px-2 border-green-500/30 text-green-600 hover:bg-green-500/10">
+                            <a href={`https://wa.me/${order.contact.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer">
+                              <MessageCircle className="h-3.5 w-3.5 mr-1" /> Hubungi
+                            </a>
+                          </Button>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))
@@ -319,6 +396,6 @@ export default function AdminPage() {
         </CardContent>
       </Card>
 
-    </>
+    </div>
   );
 }

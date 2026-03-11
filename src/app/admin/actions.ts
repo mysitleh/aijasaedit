@@ -9,6 +9,7 @@ import {
   addDoc,
   deleteDoc,
   doc,
+  setDoc,
 } from 'firebase/firestore';
 import { db, isFirebaseEnabled } from '@/lib/firebase';
 import { z } from 'zod';
@@ -128,3 +129,19 @@ export async function deleteService(id: string) {
         return { success: false, error: "Failed to delete service." };
     }
 }
+
+export async function updateOrderStatus(orderId: string, status: string) {
+    if (!isFirebaseEnabled) {
+        return { success: false, error: "Firebase is not configured." };
+    }
+    try {
+        const orderRef = doc(db, 'orders', orderId);
+        await setDoc(orderRef, { status }, { merge: true });
+        revalidatePath('/admin');
+        return { success: true };
+    } catch (error) {
+        console.error("Error updating order status:", error);
+        return { success: false, error: "Failed to update order status." };
+    }
+}
+
