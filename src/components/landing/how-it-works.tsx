@@ -67,19 +67,36 @@ const HowItWorks = ({ services }: { services: Service[] }) => {
           <h3 className="text-xl md:text-2xl font-bold text-center mb-8 font-headline">Daftar Harga</h3>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 md:gap-5">
             {prices.map((item) => (
-              <Card key={item.id} className="group text-center bg-card hover:bg-secondary/40 transition-all duration-300 border border-border hover:border-primary/30 rounded-2xl">
-                <CardHeader className="items-center pb-2 pt-4 px-3 md:px-6 md:pt-6">
-                  <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-secondary/60 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+              <Card key={item.id} className="group overflow-hidden text-center bg-card hover:bg-secondary/40 transition-all duration-300 border border-border hover:border-primary/30 rounded-2xl flex flex-col">
+                <div className="relative w-full h-32 sm:h-40 overflow-hidden bg-muted">
+                  {item.image_placeholder ? (
+                    <img 
+                      src={item.image_placeholder} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-secondary/60">
+                      {renderIcon(item.icon, { className: 'h-10 w-10 text-primary/50' })}
+                    </div>
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
+                </div>
+                
+                <CardHeader className="items-center pb-2 pt-2 px-3 md:px-6 relative z-10 -mt-6">
+                  <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-background border border-border shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary/50 group-hover:shadow-primary/20">
                     {renderIcon(item.icon, { className: 'h-5 w-5 md:h-6 md:w-6 text-primary' })}
                   </div>
-                  <CardTitle className="mt-2 text-xs md:text-sm font-semibold leading-tight line-clamp-2 px-0">
+                  <CardTitle className="mt-2 text-sm md:text-base font-bold leading-tight line-clamp-2 px-0 text-foreground">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="px-3 pb-4 md:px-6 md:pb-6">
-                  <p className="text-sm md:text-lg font-bold text-primary">{item.price}</p>
+                <CardContent className="px-3 pb-4 md:px-6 md:pb-6 mt-auto">
+                  <p className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm md:text-base font-bold text-primary">
+                    {item.price}
+                  </p>
                   {item.price === 'Hubungi Kami' && (
-                    <p className="text-xs text-muted-foreground mt-1 hidden sm:block">Untuk kebutuhan unik Anda</p>
+                    <p className="text-xs text-muted-foreground mt-2 hidden sm:block">Untuk kebutuhan unik Anda</p>
                   )}
                 </CardContent>
               </Card>
