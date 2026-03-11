@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
+  manifest: '/manifest.json',
   openGraph: {
     title: 'AI Jasa Edit - Transformasi Foto & Video dengan AI',
     description: 'Wujudkan imajinasi Anda. Kami mengubah foto dan video biasa menjadi karya seni luar biasa dengan sentuhan keajaiban AI.',
