@@ -40,9 +40,18 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground text-center sm:text-left">
             &copy; {new Date().getFullYear()} AI Jasa Edit. Hak cipta dilindungi.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Dibuat dengan <span className="text-primary">♥</span> dan AI
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-xs text-muted-foreground">
+              Dibuat dengan <span className="text-primary">♥</span> dan AI
+            </p>
+            <span className="text-muted-foreground/20">|</span>
+            <a 
+              href="/admin" 
+              className="text-[10px] text-muted-foreground/30 hover:text-primary transition-colors hover:underline underline-offset-4"
+            >
+              Staff Portal
+            </a>
+          </div>
         </div>
       </div>
     </footer>
