@@ -11,9 +11,9 @@ export const siteSettingsSchema = z.object({
 export type SiteSettings = z.infer<typeof siteSettingsSchema>;
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  whatsappNumber: "6281234567890",
-  bankName: "BCA (Bank Central Asia)",
-  bankAccount: "1234-5678-90",
-  bankHolder: "PT Jasa Edit AI",
+  whatsappNumber: "6281353658705",
+  bankName: "Bank BRI",
+  bankAccount: "3896 0100 3715 509",
+  bankHolder: "Hamada Zein",
   qrisImage: "/qris-payment.webp",
 };

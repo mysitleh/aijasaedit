@@ -1,13 +1,13 @@
 export const SITE_CONFIG = {
   whatsapp: {
-    number: "6281234567890",
-    display: "0812-3456-7890",
+    number: "6281353658705",
+    display: "0813-5365-8705",
   },
   payment: {
     bank: {
-      name: "BCA (Bank Central Asia)",
-      account: "1234-5678-90",
-      holder: "PT Jasa Edit AI",
+      name: "Bank BRI",
+      account: "3896-0100-3715-509",
+      holder: "Hamada Zein",
     },
     qris: {
       image: "/qris-payment.webp",
