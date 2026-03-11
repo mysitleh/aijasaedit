@@ -38,6 +38,7 @@ import { createOrderAction } from "@/app/actions";
 import { HARDCODED_SERVICES, SITE_CONFIG } from "@/data/site-config";
 import { storage } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useToast } from "@/hooks/use-toast";
 
 const STEPS = [
   { id: 1, label: "Layanan", icon: Sparkles },
@@ -138,6 +139,7 @@ export default function OrderForm({
   settings: SiteSettings 
 }) {
   const services = firebaseServices.length > 0 ? firebaseServices : HARDCODED_SERVICES;
+  const { toast } = useToast();
 
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<(typeof services)[0] | null>(null);
