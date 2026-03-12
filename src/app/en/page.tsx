@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Header from "@/components/landing/header";
 import Footer from "@/components/landing/footer";
-import OrderForm from "@/components/landing/order-form";
+import OrderFormEN from "@/components/landing/order-form-en";
 import { LocalBusinessJsonLd, ServicesJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { getServices, type Service } from "@/app/actions";
 import { getSiteSettings } from "@/app/actions/settings";
@@ -274,7 +274,7 @@ export default async function EnglishPage() {
             </div>
             <div className="mx-auto max-w-2xl">
               <Suspense fallback={<div className="h-96 animate-pulse rounded-2xl bg-muted/50" />}>
-                <OrderForm services={services} settings={settings} />
+                <OrderFormEN services={services} settings={settings} />
               </Suspense>
             </div>
           </div>
