@@ -39,6 +39,11 @@ export const metadata: Metadata = {
   creator: 'AI Jasa Edit',
   alternates: {
     canonical: siteUrl,
+    languages: {
+      'id': siteUrl,
+      'en': `${siteUrl}/en`,
+      'x-default': siteUrl,
+    },
   },
   robots: {
     index: true,

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "../icons/logo";
 import { Sparkles, Menu, X, ChevronRight, Home, Palette, Layers, Tag, Images, HelpCircle, BookOpen, Users } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import LanguageSwitcher from "@/components/ui/language-switcher";
 import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
@@ -203,6 +204,7 @@ const Header = () => {
 
           <div className="flex items-center gap-2">
             <div className="hidden sm:flex items-center gap-2">
+              <LanguageSwitcher />
               <ThemeToggle />
               <Button asChild className="relative overflow-hidden group">
                 <a href="#order">
