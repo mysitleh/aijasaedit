@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import ScrollToTopButton from '@/components/landing/scroll-to-top-button';
 import WhatsAppChat from '@/components/landing/whatsapp-chat';
 import MobileBottomNav from '@/components/landing/mobile-bottom-nav';
+import PWAInstallPrompt from '@/components/pwa/install-prompt';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-poppins' })
 
@@ -87,6 +88,7 @@ export default async function RootLayout({
             <ScrollToTopButton />
             <WhatsAppChat whatsappNumber={settings.whatsappNumber} />
             <MobileBottomNav />
+            <PWAInstallPrompt />
         </ThemeProvider>
       </body>
     </html>

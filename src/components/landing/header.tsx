@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "../icons/logo";
 import { Sparkles, Menu, X, ChevronRight, Home, Palette, Layers, Tag, Images, HelpCircle, BookOpen } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
   { href: "#",            label: "Home",    icon: Home },
@@ -122,10 +122,41 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const delta = currentY - lastScrollY.current;
+
+        if (delta < -8 || currentY < 80) {
+          setHeaderVisible(true);
+        } else if (delta > 8 && currentY > 100) {
+          setHeaderVisible(false);
+        }
+
+        lastScrollY.current = currentY;
+        ticking.current = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="px-4 lg:px-6 h-[calc(4rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-30 border-b border-border/50">
+      <header
+        className={`px-4 lg:px-6 h-[calc(4rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-30 border-b border-border/50 transition-transform duration-300 ease-out ${
+          headerVisible ? "translate-y-0" : "sm:translate-y-0 -translate-y-full"
+        }`}
+      >
         <div className="container mx-auto flex items-center justify-between">
           <a href="#" className="flex items-center justify-center">
             <Logo className="h-6 w-auto" />
