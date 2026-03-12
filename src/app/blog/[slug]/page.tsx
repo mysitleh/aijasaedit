@@ -6,6 +6,7 @@ import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import { Clock, ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Logo from "@/components/icons/logo";
 import { Button } from "@/components/ui/button";
+import { ShareButton } from "@/components/ui/share-button";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export function generateStaticParams() {
@@ -182,7 +183,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <h1 className="text-3xl md:text-4xl font-bold font-headline text-primary-foreground leading-tight mb-4">
             {post.title}
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground">{post.excerpt}</p>
+          <p className="text-base md:text-lg text-muted-foreground mb-4">{post.excerpt}</p>
+          
+          <div className="flex items-center gap-2 mb-2">
+            <ShareButton 
+              url={`${siteUrl}/blog/${post.slug}`} 
+              title={post.title} 
+              text={post.excerpt} 
+              variant="secondary"
+              className="w-full sm:w-auto font-medium"
+            />
+          </div>
         </div>
 
         <div className="relative rounded-2xl overflow-hidden mb-10 aspect-video shadow-xl ring-1 ring-white/10">

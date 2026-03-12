@@ -10,6 +10,7 @@ import type { Affiliate, CommissionLog } from "@/types/affiliate";
 import Header from "@/components/landing/header";
 import Footer from "@/components/landing/footer";
 import { Button } from "@/components/ui/button";
+import { ShareButton } from "@/components/ui/share-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -193,14 +194,22 @@ export default function AffiliateDashboardPage() {
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground mb-1">Link Referral</p>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <code className="text-xs bg-muted px-3 py-1.5 rounded-lg break-all flex-1">
+                        <div className="flex items-center gap-2 flex-wrap mt-2">
+                          <code className="text-xs bg-muted px-3 py-2 rounded-lg break-all flex-1 border border-border">
                             {referralLink}
                           </code>
-                          <Button variant="outline" size="sm" onClick={copyLink}>
-                            {copied ? <Check className="h-3.5 w-3.5 mr-1" /> : <Copy className="h-3.5 w-3.5 mr-1" />}
-                            {copied ? "Tersalin" : "Salin"}
-                          </Button>
+                          <div className="flex items-center gap-2">
+                            <Button variant="outline" size="sm" onClick={copyLink}>
+                              {copied ? <Check className="h-4 w-4 mr-1.5" /> : <Copy className="h-4 w-4 mr-1.5" />}
+                              {copied ? "Tersalin" : "Salin"}
+                            </Button>
+                            <ShareButton 
+                              url={referralLink} 
+                              title="Bergabunglah dengan AI Jasa Edit!" 
+                              text={`Dapatkan hasil edit foto & video AI keren. Gunakan kode referralku (${affiliate.referral_code})`}
+                              variant="default"
+                            />
+                          </div>
                         </div>
                       </div>
                       <p className="text-xs text-muted-foreground">
