@@ -34,7 +34,7 @@ export default function ScrollToTopButton() {
       variant="default"
       onClick={scrollToTop}
       className={cn(
-        'fixed bottom-6 right-6 z-50 h-12 w-12 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-110',
+        'fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-6 z-50 h-12 w-12 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:scale-110',
         isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
       )}
       aria-label="Kembali ke atas"

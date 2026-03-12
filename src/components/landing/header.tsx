@@ -44,7 +44,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
       />
 
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm flex flex-col bg-background border-l border-border/50 shadow-2xl transition-transform duration-300 ease-out ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 z-50 h-full w-[85vw] max-w-sm flex flex-col bg-background border-l border-border/50 shadow-2xl transition-transform duration-300 ease-out pt-[env(safe-area-inset-top)] ${open ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-purple-600/20 to-cyan-500/10 blur-3xl" />
@@ -125,7 +125,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-30 border-b border-border/50">
+      <header className="px-4 lg:px-6 h-[calc(4rem+env(safe-area-inset-top))] pt-[env(safe-area-inset-top)] flex items-center bg-background/80 backdrop-blur-sm sticky top-0 z-30 border-b border-border/50">
         <div className="container mx-auto flex items-center justify-between">
           <a href="#" className="flex items-center justify-center">
             <Logo className="h-6 w-auto" />

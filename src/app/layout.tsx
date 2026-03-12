@@ -6,6 +6,7 @@ import CustomCursor from '@/components/ui/custom-cursor';
 import { ThemeProvider } from '@/components/theme-provider';
 import ScrollToTopButton from '@/components/landing/scroll-to-top-button';
 import WhatsAppChat from '@/components/landing/whatsapp-chat';
+import MobileBottomNav from '@/components/landing/mobile-bottom-nav';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-poppins' })
 
@@ -17,8 +18,8 @@ export const viewport = {
   maximumScale: 5,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0f1e" },
-    { media: "(prefers-color-scheme: light)", color: "#e8f8f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+    { media: "(prefers-color-scheme: light)", color: "#020617" },
   ],
 };
 
@@ -31,6 +32,11 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "AI Jasa Edit",
+  },
   openGraph: {
     title: 'AI Jasa Edit - Transformasi Foto & Video dengan AI',
     description: 'Wujudkan imajinasi Anda. Kami mengubah foto dan video biasa menjadi karya seni luar biasa dengan sentuhan keajaiban AI.',
@@ -80,6 +86,7 @@ export default async function RootLayout({
             <Toaster />
             <ScrollToTopButton />
             <WhatsAppChat whatsappNumber={settings.whatsappNumber} />
+            <MobileBottomNav />
         </ThemeProvider>
       </body>
     </html>

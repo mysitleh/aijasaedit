@@ -71,16 +71,17 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth h-full;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    background-color: hsl(var(--background));
   }
   * {
     @apply border-border;
     -webkit-tap-highlight-color: transparent;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-full;
     cursor: none;
     overscroll-behavior: none;
     -webkit-font-smoothing: antialiased;

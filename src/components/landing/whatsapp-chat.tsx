@@ -46,7 +46,7 @@ export default function WhatsAppChat({ whatsappNumber }: { whatsappNumber: strin
 
   return (
     <div
-      className={`fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3 transition-all duration-500 ${
+      className={`fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-6 z-50 flex flex-col items-start gap-3 transition-all duration-500 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
