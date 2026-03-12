@@ -46,30 +46,34 @@ export default function MobileBottomNav() {
     >
       <div className="relative bg-background/90 backdrop-blur-xl border-t border-border/50 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
         <div className="flex items-center justify-around h-14 px-1">
-          <a
-            href="#"
-            className="flex flex-col items-center justify-center flex-1 gap-0.5 text-muted-foreground active:text-primary transition-colors"
+          <Link
+            href="/"
+            className={`flex flex-col items-center justify-center flex-1 gap-0.5 transition-colors ${
+              pathname === "/"
+                ? "text-primary"
+                : "text-muted-foreground active:text-primary"
+            }`}
           >
             <Home className="h-5 w-5" />
             <span className="text-[10px] font-medium leading-none">Home</span>
-          </a>
+          </Link>
 
-          <a
-            href="#showcase"
+          <Link
+            href="/#showcase"
             className="flex flex-col items-center justify-center flex-1 gap-0.5 text-muted-foreground active:text-primary transition-colors"
           >
             <Images className="h-5 w-5" />
             <span className="text-[10px] font-medium leading-none">Galeri</span>
-          </a>
+          </Link>
 
           {/* Primary Action — slightly raised */}
           <div className="relative flex-1 flex flex-col items-center -mt-5">
-            <a
-              href="#order"
+            <Link
+              href="/#order"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 shadow-lg shadow-purple-500/30 border-[3px] border-background active:scale-95 transition-transform"
             >
               <Sparkles className="h-5 w-5 text-white" />
-            </a>
+            </Link>
             <span className="text-[9px] font-bold text-primary mt-1 uppercase tracking-tight">
               Pesan
             </span>
