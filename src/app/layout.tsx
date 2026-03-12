@@ -8,6 +8,8 @@ import ScrollToTopButton from '@/components/landing/scroll-to-top-button';
 import WhatsAppChat from '@/components/landing/whatsapp-chat';
 import MobileBottomNav from '@/components/landing/mobile-bottom-nav';
 import PWAInstallPrompt from '@/components/pwa/install-prompt';
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-poppins' })
 
@@ -111,6 +113,9 @@ export default async function RootLayout({
             <MobileBottomNav />
             <PWAInstallPrompt />
         </ThemeProvider>
+        
+        <Analytics />
+        <GoogleAnalytics gaId="G-XXXXXX" />
       </body>
     </html>
   );
