@@ -75,6 +75,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: 'id_ID',
+    alternateLocale: ['en_US', 'en_GB'],
     type: 'website',
   },
   twitter: {
