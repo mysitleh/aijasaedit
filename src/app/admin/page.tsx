@@ -209,15 +209,16 @@ export default function AdminPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="w-full overflow-x-auto">
+          {/* Tampilan Desktop (Tabel) */}
+          <div className="hidden md:block w-full overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="min-w-[200px]">Created At</TableHead>
+                  <TableHead className="min-w-[150px]">Tanggal</TableHead>
                   <TableHead className="min-w-[150px]">Kontak</TableHead>
-                  <TableHead className="min-w-[180px]">Layanan</TableHead>
+                  <TableHead className="min-w-[150px]">Layanan</TableHead>
                   <TableHead className="min-w-[150px]">Status</TableHead>
-                  <TableHead className="min-w-[250px]">Pesan</TableHead>
+                  <TableHead className="min-w-[200px]">Pesan</TableHead>
                   <TableHead>Aksi</TableHead>
                 </TableRow>
               </TableHeader>
@@ -225,7 +226,7 @@ export default function AdminPage() {
                 {loadingOrders ? (
                   Array.from({ length: 3 }).map((_, index) => (
                     <TableRow key={index}>
-                       <TableCell colSpan={7}>
+                       <TableCell colSpan={6}>
                             <Skeleton className="h-8 w-full" />
                        </TableCell>
                     </TableRow>
@@ -233,12 +234,11 @@ export default function AdminPage() {
                 ) : orders.length > 0 ? (
                   orders.map((order) => (
                     <TableRow key={order.id}>
-                      <TableCell className="font-medium">
+                      <TableCell className="font-medium text-xs">
                         {format(new Date(order.created_at), 'dd MMM yyyy, HH:mm')}
                       </TableCell>
-                      <TableCell>{order.name}</TableCell>
-                      <TableCell>{order.contact}</TableCell>
-                      <TableCell>{order.service}</TableCell>
+                      <TableCell className="text-sm font-semibold">{order.name}<br/><span className="text-xs font-normal text-muted-foreground">{order.contact}</span></TableCell>
+                      <TableCell className="text-sm">{order.service}</TableCell>
                       <TableCell>
                         <Select 
                           defaultValue={order.status} 
@@ -255,7 +255,7 @@ export default function AdminPage() {
                           </SelectContent>
                         </Select>
                       </TableCell>
-                      <TableCell className="max-w-[300px] truncate" title={order.message}>{order.message}</TableCell>
+                      <TableCell className="max-w-[250px] truncate text-xs" title={order.message}>{order.message}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
                           <Button variant="outline" size="sm" asChild className="h-8 px-2">
@@ -274,13 +274,97 @@ export default function AdminPage() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center h-24">
+                    <TableCell colSpan={6} className="text-center h-24 text-muted-foreground">
                       No orders found.
                     </TableCell>
                   </TableRow>
                 )}
               </TableBody>
             </Table>
+          </div>
+
+          {/* Tampilan Mobile (Card List) */}
+          <div className="grid grid-cols-1 gap-4 md:hidden">
+            {loadingOrders ? (
+              Array.from({ length: 3 }).map((_, index) => (
+                <Card key={index} className="overflow-hidden">
+                  <CardContent className="p-4 flex flex-col gap-3">
+                    <Skeleton className="h-4 w-1/2" />
+                    <Skeleton className="h-3 w-3/4" />
+                    <div className="flex justify-between items-center pt-2">
+                      <Skeleton className="h-8 w-24" />
+                      <Skeleton className="h-8 w-24" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : orders.length > 0 ? (
+              orders.map((order) => (
+                <Card key={order.id} className="overflow-hidden border-border bg-card">
+                  <div className={`h-1.5 w-full ${
+                    order.status === 'pending_payment' ? 'bg-yellow-500' :
+                    order.status === 'processing' ? 'bg-blue-500' :
+                    order.status === 'completed' ? 'bg-green-500' : 'bg-red-500'
+                  }`} />
+                  <CardContent className="p-4 space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="font-semibold text-sm">{order.name}</p>
+                        <p className="text-xs text-muted-foreground">{order.contact}</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground font-medium bg-muted px-2 py-1 rounded-md">
+                        {format(new Date(order.created_at), 'dd MMM yyyy')}
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">Layanan</p>
+                      <p className="text-sm font-medium">{order.service}</p>
+                    </div>
+
+                    <div className="bg-muted/50 p-2.5 rounded-lg border border-border/50">
+                      <p className="text-xs text-muted-foreground line-clamp-2 italic">"{order.message}"</p>
+                    </div>
+                    
+                    <div className="flex items-center justify-between pt-2 border-t border-border/50">
+                      <div className="w-[140px]">
+                        <Select 
+                          defaultValue={order.status} 
+                          onValueChange={(value) => handleStatusUpdate(order.id, value)}
+                        >
+                          <SelectTrigger className={`h-8 w-full text-xs font-bold ${getStatusColor(order.status)}`}>
+                            <SelectValue placeholder="Status" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pending_payment">PENDING</SelectItem>
+                            <SelectItem value="processing">PROCESSING</SelectItem>
+                            <SelectItem value="completed">COMPLETED</SelectItem>
+                            <SelectItem value="cancelled">CANCELLED</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5">
+                        <Button variant="outline" size="icon" asChild className="h-8 w-8 text-primary">
+                          <a href={order.file_url} target="_blank" rel="noopener noreferrer" title="Buka File">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                        </Button>
+                        <Button variant="outline" size="icon" asChild className="h-8 w-8 text-green-600 border-green-500/30 hover:bg-green-500/10">
+                          <a href={`https://wa.me/${order.contact.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                            <MessageCircle className="h-3.5 w-3.5" />
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <div className="text-center py-8 text-muted-foreground text-sm border-2 border-dashed rounded-xl">
+                No orders found.
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

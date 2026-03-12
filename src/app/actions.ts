@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, where, doc, setDoc, increment } from "firebase/firestore";
 import { db, isFirebaseEnabled } from "@/lib/firebase";
 // Note: AI Transformation and Storage uploads are removed from this immediate action
 // to prevent timeouts and support an asynchronous workflow.
@@ -12,6 +12,7 @@ const orderSchema = z.object({
   service: z.string({ required_error: "Silakan pilih layanan." }),
   description: z.string().min(10, { message: "Deskripsi harus memiliki minimal 10 karakter." }).max(500),
   fileUrl: z.string().url(),
+  referralCode: z.string().optional(),
 });
 
 type OrderPayload = z.infer<typeof orderSchema>;
@@ -88,21 +89,72 @@ export async function createOrderAction(payload: OrderPayload): Promise<{
     return { success: false, error: errorMessage || "Invalid data provided." };
   }
 
-  const { name, contact, service, description, fileUrl } = validation.data;
+  const { name, contact, service, description, fileUrl, referralCode } = validation.data;
 
   try {
-    // Step 1: Immediately save the new order to Firestore with a pending status.
-    // The AI processing part is removed to ensure a fast response to the user.
-    await addDoc(collection(db, "orders"), {
+    // Step 1: Save the new order to Firestore with a pending status.
+    const orderDoc = await addDoc(collection(db, "orders"), {
       name,
       contact,
       service,
       message: description,
       file_url: fileUrl,
+      referral_code: referralCode || null,
       created_at: serverTimestamp(),
-      status: "pending_payment", // Indicates that the order is awaiting payment/processing.
-      // transformed_file_urls will be added later by a separate process.
+      status: "pending_payment",
     });
+
+    // Step 2: If there's a valid referral code, create a commission log
+    if (referralCode) {
+      try {
+        const affQuery = query(
+          collection(db, "affiliates"),
+          where("referral_code", "==", referralCode),
+          where("status", "==", "active")
+        );
+        const affSnapshot = await getDocs(affQuery);
+
+        if (!affSnapshot.empty) {
+          const affDoc = affSnapshot.docs[0];
+          const affData = affDoc.data();
+          const commissionRate = affData.commission_rate || 10;
+
+          // Parse price from service string (e.g., "Rp 75.000" -> 75000)
+          const priceMatch = service.match(/[\d.]+/g);
+          const priceNum = priceMatch
+            ? parseInt(priceMatch.join("").replace(/\./g, ""), 10)
+            : 0;
+          const commissionAmount = Math.round((priceNum * commissionRate) / 100);
+
+          // Create commission log
+          await addDoc(collection(db, "commissions"), {
+            affiliate_id: affDoc.id,
+            affiliate_name: affData.name,
+            referral_code: referralCode,
+            order_id: orderDoc.id,
+            order_service: service,
+            order_amount: service,
+            commission_amount: commissionAmount,
+            status: "pending",
+            created_at: serverTimestamp(),
+          });
+
+          // Update affiliate stats
+          const affRef = doc(db, "affiliates", affDoc.id);
+          await setDoc(
+            affRef,
+            {
+              total_referrals: increment(1),
+              total_commission: increment(commissionAmount),
+            },
+            { merge: true }
+          );
+        }
+      } catch (affError) {
+        // Don't fail the order if affiliate tracking fails
+        console.error("Affiliate tracking error (non-fatal):", affError);
+      }
+    }
 
     return {
       success: true,

@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { renderIcon, IconName } from '@/components/icons/icon-map';
 import Logo from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
-import { Home, LogOut, FileText, BookOpen, Settings } from 'lucide-react';
+import { Home, LogOut, FileText, BookOpen, Settings, Users } from 'lucide-react';
 import { logoutAction } from './auth-actions';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -36,6 +36,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <Link href="/admin/blog">
                     <BookOpen className="h-4 w-4" />
                     <span>Blog</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname.startsWith('/admin/affiliate')} tooltip="Affiliate">
+                  <Link href="/admin/affiliate">
+                    <Users className="h-4 w-4" />
+                    <span>Affiliate</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

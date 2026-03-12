@@ -2,6 +2,7 @@
 
 import { useState, useTransition, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { loginAction } from '../admin/auth-actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -98,7 +99,7 @@ function LoginContent() {
       </Card>
 
       <p className="text-center text-xs text-muted-foreground">
-        <a href="/" className="hover:text-primary transition-colors">← Kembali ke situs utama</a>
+        <Link href="/" className="hover:text-primary transition-colors">← Kembali ke situs utama</Link>
       </p>
     </div>
   );

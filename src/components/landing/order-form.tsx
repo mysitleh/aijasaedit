@@ -1,6 +1,6 @@
 "use client";
-
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -152,6 +152,16 @@ export default function OrderForm({
   const [description, setDescription] = useState("");
   const [fileError, setFileError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [referralCode, setReferralCode] = useState<string | null>(null);
+
+  // Baca referral code dari URL (?ref=KODE)
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const ref = searchParams.get("ref");
+    if (ref) {
+      setReferralCode(ref.toUpperCase());
+    }
+  }, [searchParams]);
 
   const effectiveServiceTitle = isOtherSelected
     ? customServiceName || "Layanan Lainnya"
@@ -246,6 +256,7 @@ export default function OrderForm({
         service: effectiveServiceTitle,
         description: data.description,
         fileUrl: fileUrl,
+        referralCode: referralCode || undefined,
       });
 
       if (result.success) {
@@ -311,6 +322,15 @@ export default function OrderForm({
     <Card className="bg-card border border-border rounded-2xl overflow-hidden">
       <CardContent className="p-6 md:p-8">
         <StepIndicator current={step} />
+
+        {/* Referral Badge */}
+        {referralCode && (
+          <div className="flex items-center justify-center gap-2 mb-4 animate-fade-in-up">
+            <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-600 border-emerald-500/30 px-3 py-1 text-xs font-semibold">
+              🎁 Referral: {referralCode}
+            </Badge>
+          </div>
+        )}
 
         {step === 1 && (
           <div className="space-y-6 animate-fade-in-up">

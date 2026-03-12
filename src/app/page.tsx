@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "@/components/landing/header";
 import Hero from "@/components/landing/hero";
 import StyleGallery from "@/components/landing/style-gallery";
@@ -42,7 +43,9 @@ export default async function Home() {
               </p>
             </div>
             <div className="mx-auto max-w-2xl">
-              <OrderForm services={services} settings={settings} />
+              <Suspense fallback={<div className="h-96 animate-pulse rounded-2xl bg-muted/50" />}>
+                <OrderForm services={services} settings={settings} />
+              </Suspense>
             </div>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import Link from "next/link";
 import Logo from "../icons/logo";
 
 const Footer = () => {
@@ -19,9 +20,11 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#gaya" className="hover:text-primary transition-colors">Pilihan Gaya</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Layanan</a></li>
-              <li><a href="#how-it-works" className="hover:text-primary transition-colors">Cara Kerja & Harga</a></li>
+              <li><a href="#how-it-works" className="hover:text-primary transition-colors">Cara Kerja &amp; Harga</a></li>
               <li><a href="#showcase" className="hover:text-primary transition-colors">Galeri Karya</a></li>
               <li><a href="#order" className="hover:text-primary transition-colors">Pesan Sekarang</a></li>
+              <li><Link href="/affiliate" className="hover:text-primary transition-colors font-medium text-emerald-500/80">🎁 Program Affiliate</Link></li>
+              <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
             </ul>
           </div>
           <div className="flex flex-col gap-3">
