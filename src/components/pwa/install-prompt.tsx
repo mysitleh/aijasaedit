@@ -25,11 +25,12 @@ export default function PWAInstallPrompt() {
     setIsStandalone(standalone);
     if (standalone) return;
 
-    // Check if dismissed recently (24h cooldown)
+    // Check if dismissed recently (Currently set to 1 minute for testing, usually 24h)
     const dismissed = localStorage.getItem("pwa-install-dismissed");
     if (dismissed) {
       const dismissedAt = parseInt(dismissed, 10);
-      if (Date.now() - dismissedAt < 24 * 60 * 60 * 1000) return;
+      // Change to 10 seconds for easier testing right now
+      if (Date.now() - dismissedAt < 10 * 1000) return; 
     }
 
     // Detect iOS
