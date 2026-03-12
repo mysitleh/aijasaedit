@@ -28,6 +28,27 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'AI Jasa Edit - Layanan Edit Foto & Video Berbasis AI',
   description: 'Ubah foto dan video Anda dengan kekuatan AI. Ciptakan visual yang memukau dengan mudah bersama AI Jasa Edit.',
+  keywords: [
+    'jasa edit foto', 'jasa edit video', 'edit foto ai', 'edit video ai', 
+    'jasa desain ai', 'ai jasa edit', 'aijasaedit', 'jasa edit foto nikah', 
+    'jasa foto prewedding', 'gaya foto viral', 'edit undangan digital'
+  ],
+  authors: [{ name: 'AI Jasa Edit Team' }],
+  creator: 'AI Jasa Edit',
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/favicon.png',
     apple: '/icon-pwa.png',

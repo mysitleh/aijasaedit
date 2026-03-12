@@ -8,7 +8,7 @@ import Showcase from "@/components/landing/showcase";
 import FaqSection from "@/components/landing/faq-section";
 import OrderForm from "@/components/landing/order-form";
 import Footer from "@/components/landing/footer";
-import { LocalBusinessJsonLd, ServicesJsonLd } from "@/components/seo/json-ld";
+import { LocalBusinessJsonLd, ServicesJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { getServices, type Service } from "./actions";
 import { getSiteSettings } from "./actions/settings";
 import { type SiteSettings, DEFAULT_SETTINGS } from "@/types/settings";
@@ -21,6 +21,11 @@ export default async function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <LocalBusinessJsonLd />
       <ServicesJsonLd />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Beranda", url: "/" },
+        ]}
+      />
       <Header />
       <main className="flex-1">
         <Hero />
