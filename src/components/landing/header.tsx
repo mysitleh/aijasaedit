@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Logo from "../icons/logo";
-import { Sparkles, Menu, X, ChevronRight, Home, Palette, Layers, Tag, Images, HelpCircle, BookOpen } from "lucide-react";
+import { Sparkles, Menu, X, ChevronRight, Home, Palette, Layers, Tag, Images, HelpCircle, BookOpen, Users } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { useState, useEffect, useRef } from "react";
 
@@ -86,6 +86,20 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             <div className="my-3 border-t border-border/40" />
 
             <Link
+              href="/affiliate"
+              onClick={onClose}
+              className="group flex items-center gap-3 rounded-xl px-3 py-3.5 text-muted-foreground transition-all duration-150 hover:bg-muted/60 hover:text-foreground active:scale-[0.98]"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500/10 to-teal-500/10 ring-1 ring-border/50 transition-colors group-hover:from-emerald-500/20 group-hover:to-teal-500/20">
+                <Users className="h-4 w-4 text-emerald-500/80 group-hover:text-emerald-500 transition-colors" />
+              </span>
+              <span className="flex-1 text-base font-medium">Program Affiliate</span>
+              <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-bold text-white">
+                🎁
+              </span>
+            </Link>
+
+            <Link
               href="/blog"
               onClick={onClose}
               className="group flex items-center gap-3 rounded-xl px-3 py-3.5 text-muted-foreground transition-all duration-150 hover:bg-muted/60 hover:text-foreground active:scale-[0.98]"
@@ -147,7 +161,15 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Listen for custom event from mobile bottom nav to open menu
+    const handleOpenMenu = () => setMobileOpen(true);
+    window.addEventListener("open-mobile-menu", handleOpenMenu);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("open-mobile-menu", handleOpenMenu);
+    };
   }, []);
 
   return (
@@ -167,6 +189,11 @@ const Header = () => {
             {navLinks.map((link) => (
               <NavLink key={link.href} href={link.href} label={link.label} />
             ))}
+            <Link href="/affiliate" className="group relative px-3 py-1.5 text-sm font-medium text-emerald-500/80 transition-colors duration-200 hover:text-emerald-500">
+              <span className="absolute inset-0 rounded-full scale-90 opacity-0 bg-emerald-500/10 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100" />
+              <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-emerald-500 transition-all duration-300 group-hover:w-4/5" />
+              <span className="relative flex items-center gap-1.5">🎁 Affiliate</span>
+            </Link>
             <Link href="/blog" className="group relative px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground">
               <span className="absolute inset-0 rounded-full scale-90 opacity-0 bg-gradient-to-r from-purple-500/10 via-primary/10 to-cyan-500/10 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100" />
               <span className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-300 group-hover:w-4/5" />

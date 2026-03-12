@@ -89,15 +89,17 @@ export default function MobileBottomNav() {
             </span>
           </Link>
 
-          <a
-            href="#services"
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('open-mobile-menu'));
+            }}
             className="flex flex-col items-center justify-center flex-1 gap-0.5 text-muted-foreground active:text-primary transition-colors"
           >
             <MenuIcon className="h-5 w-5" />
             <span className="text-[10px] font-medium leading-none">
               Lainnya
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
