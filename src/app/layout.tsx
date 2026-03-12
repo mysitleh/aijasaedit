@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   description: 'Ubah foto dan video Anda dengan kekuatan AI. Ciptakan visual yang memukau dengan mudah bersama AI Jasa Edit.',
   icons: {
     icon: '/favicon.png',
-    apple: '/favicon.png',
+    apple: '/icon-pwa.png',
   },
   manifest: '/manifest.json',
   appleWebApp: {
